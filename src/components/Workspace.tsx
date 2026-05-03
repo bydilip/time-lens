@@ -26,6 +26,7 @@ export default function Workspace({ query, setQuery, calculation }: Props) {
           result={result}
           error={error}
           isLoading={isLoading}
+          inputDate={query.input}
           inputCalendar={query.input.calendar}
           onSelectAsInput={(date) =>
             setQuery({ ...query, input: date })

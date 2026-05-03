@@ -1,5 +1,5 @@
 import CalendarRow from "./CalendarRow";
-import EdgeCaseBadge from "./EdgeCaseBadge";
+import EdgeCasePanel from "./EdgeCasePanel";
 import TimelineView from "./TimelineView";
 import { CALENDARS, type CalendarDate, type CalendarId, type Result } from "../types";
 
@@ -7,13 +7,14 @@ type Props = {
   result: Result | null;
   error: string | null;
   isLoading: boolean;
+  inputDate: CalendarDate;
   inputCalendar: CalendarId;
   onSelectAsInput: (date: CalendarDate) => void;
 };
 
 const WEEKDAYS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
-export default function ResultsPanel({ result, error, isLoading, inputCalendar, onSelectAsInput }: Props) {
+export default function ResultsPanel({ result, error, isLoading, inputDate, inputCalendar, onSelectAsInput }: Props) {
   const isoWeek = result?.dates["iso-week"]?.fields;
 
   return (
@@ -71,14 +72,7 @@ export default function ResultsPanel({ result, error, isLoading, inputCalendar, 
       </ul>
       )}
 
-      {result && result.flags.length > 0 && (
-        <div className="mt-4 flex flex-wrap gap-2">
-          {result.flags.map((f, i) => (
-            <EdgeCaseBadge key={i} flag={f} />
-          ))}
-        </div>
-      )}
-
+      <EdgeCasePanel result={result} error={error} inputDate={inputDate} />
       {result && <TimelineView steps={result.trace} />}
     </section>
   );
