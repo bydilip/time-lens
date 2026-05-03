@@ -83,12 +83,16 @@ export default function DateField({ calendar, value, onChange }: Props) {
               type={f.name === "text" ? "text" : "number"}
               placeholder={f.label}
               value={value[f.name] ?? ""}
-              onChange={(e) =>
+              onChange={(e) => {
+                const nextValue =
+                  f.name === "text" || e.target.value === ""
+                    ? e.target.value
+                    : Number(e.target.value);
                 onChange({
                   ...value,
-                  [f.name]: f.name === "text" ? e.target.value : Number(e.target.value),
-                })
-              }
+                  [f.name]: nextValue,
+                });
+              }}
               className="w-full rounded-md border border-neutral-200 dark:border-neutral-800 bg-transparent px-3 py-2 text-sm font-mono focus:outline-none focus:ring-2 focus:ring-violet-500/40"
             />
           </label>

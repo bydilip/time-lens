@@ -1,4 +1,5 @@
 import { register } from "../registry";
+import type { CalendarAdapter } from "../types";
 import { gregorian } from "./gregorian";
 import { julian } from "./julian";
 import { hebrew } from "./hebrew";
@@ -18,9 +19,10 @@ let registered = false;
 export function registerCalendars(): void {
   if (registered) return;
   registered = true;
-  [
+  const adapters: CalendarAdapter[] = [
     gregorian, julian, hebrew, islamic, persian,
     coptic, ethiopic, frenchRev, mayan, egyptian,
     isoWeek, roman, jdAdapter,
-  ].forEach(register);
+  ];
+  adapters.forEach(register);
 }

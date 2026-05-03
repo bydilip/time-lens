@@ -3,18 +3,29 @@ import TopBar from "./components/TopBar";
 import SmartInput from "./components/SmartInput";
 import Workspace from "./components/Workspace";
 import type { Query, Result } from "./types";
-import { mockInput, mockResult } from "./mock";
-import { run } from "./engine";
+import { mockInput } from "./mock";
+import { getAdapter, run } from "./engine";
+
+type CalculationState = {
+  result: Result | null;
+  error: string | null;
+  isLoading: boolean;
+};
 
 export default function App() {
   const [query, setQuery] = useState<Query>({ input: mockInput, operations: [] });
   const [paletteOpen, setPaletteOpen] = useState(false);
 
-  const result: Result = useMemo(() => {
+  const calculation: CalculationState = useMemo(() => {
     try {
-      return run(query);
-    } catch {
-      return mockResult;
+      validateQuery(query);
+      return { result: run(query), error: null, isLoading: false };
+    } catch (error) {
+      return {
+        result: null,
+        error: error instanceof Error ? error.message : "Unable to calculate this date.",
+        isLoading: false,
+      };
     }
   }, [query]);
 
@@ -28,7 +39,7 @@ export default function App() {
             console.log("NL input:", text);
           }}
         />
-        <Workspace query={query} setQuery={setQuery} result={result} />
+        <Workspace query={query} setQuery={setQuery} calculation={calculation} />
       </main>
       {paletteOpen && (
         <div
@@ -49,4 +60,24 @@ export default function App() {
       )}
     </div>
   );
+}
+
+function validateQuery(query: Query): void {
+  const adapter = getAdapter(query.input.calendar);
+
+  for (const field of adapter.schema) {
+    const value = query.input.fields[field.name];
+    if (value === undefined || value === "") {
+      throw new Error(`Enter ${field.label.toLowerCase()} for the ${adapter.label} date.`);
+    }
+    if (field.kind !== "text" && !Number.isFinite(Number(value))) {
+      throw new Error(`${field.label} must be a valid number.`);
+    }
+  }
+
+  for (const op of query.operations) {
+    if ((op.kind === "add" || op.kind === "sub") && !Number.isFinite(op.amount)) {
+      throw new Error("Operation amount must be a valid number.");
+    }
+  }
 }

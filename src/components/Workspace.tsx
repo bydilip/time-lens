@@ -8,16 +8,24 @@ import type { Query, Result } from "../types";
 type Props = {
   query: Query;
   setQuery: (q: Query) => void;
-  result: Result;
+  calculation: {
+    result: Result | null;
+    error: string | null;
+    isLoading: boolean;
+  };
 };
 
-export default function Workspace({ query, setQuery, result }: Props) {
+export default function Workspace({ query, setQuery, calculation }: Props) {
+  const { result, error, isLoading } = calculation;
+
   return (
     <div className="space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <QueryPanel query={query} setQuery={setQuery} />
         <ResultsPanel
           result={result}
+          error={error}
+          isLoading={isLoading}
           inputCalendar={query.input.calendar}
           onSelectAsInput={(date) =>
             setQuery({ ...query, input: date })
@@ -25,8 +33,8 @@ export default function Workspace({ query, setQuery, result }: Props) {
         />
       </div>
       <Timeline query={query} result={result} />
-      <ExplainTrace trace={result.trace} />
-      <ShareBar query={query} result={result} />
+      <ExplainTrace trace={result?.trace ?? []} />
+      {result && <ShareBar query={query} result={result} />}
     </div>
   );
 }

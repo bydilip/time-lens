@@ -2,7 +2,7 @@ import type { Query, Result } from "../types";
 
 type Props = {
   query: Query;
-  result: Result;
+  result: Result | null;
 };
 
 // Placeholder timeline. Phase 2 wires intermediate dates from the engine
@@ -14,7 +14,7 @@ export default function Timeline({ query, result }: Props) {
       label: pillLabel(op),
       value: "...",
     })),
-    { label: "Result", value: `JD ${result.jd}` },
+    { label: "Result", value: result ? `JD ${result.jd}` : "Invalid input" },
   ];
 
   return (

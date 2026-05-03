@@ -1,5 +1,7 @@
 import type { Operation } from "../types";
 
+type ArithmeticUnit = Extract<Operation, { kind: "add" | "sub" }>["unit"];
+
 type Props = {
   op: Operation;
   onChange: (next: Operation) => void;
@@ -47,7 +49,7 @@ export default function OperationPill({ op, onChange, onRemove }: Props) {
           />
           <select
             value={op.unit}
-            onChange={(e) => onChange({ ...op, unit: e.target.value as Operation["unit"] & string })}
+            onChange={(e) => onChange({ ...op, unit: e.target.value as ArithmeticUnit })}
             className="bg-transparent outline-none"
           >
             <option value="day">day</option>
