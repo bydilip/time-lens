@@ -33,7 +33,7 @@ npm run preview
 This repo is configured for GitHub Pages project hosting at:
 
 ```text
-https://<github-username>.github.io/time-lens/
+https://bydilip.github.io/time-lens/
 ```
 
 Vite uses `base: "/time-lens/"` so built assets resolve correctly from the repository subpath.
@@ -45,4 +45,8 @@ Deployment is handled by `.github/workflows/deploy-pages.yml`. On pushes to `mai
 3. Uploads the `dist` folder as a Pages artifact.
 4. Deploys the artifact to GitHub Pages.
 
-In the repository settings, enable Pages with GitHub Actions as the source.
+Before the deployment workflow can publish, enable Pages in the repository:
+
+1. Open `Settings` -> `Pages`.
+2. Under `Build and deployment`, set `Source` to `GitHub Actions`.
+3. Save the setting, then rerun the Pages workflow or push to `main`.
