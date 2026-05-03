@@ -5,6 +5,7 @@ import Workspace from "./components/Workspace";
 import type { Query, Result } from "./types";
 import { mockInput } from "./mock";
 import { getAdapter, run } from "./engine";
+import { parseNaturalLanguageQuery } from "./utils/naturalLanguage";
 
 type CalculationState = {
   result: Result | null;
@@ -14,6 +15,7 @@ type CalculationState = {
 
 export default function App() {
   const [query, setQuery] = useState<Query>({ input: mockInput, operations: [] });
+  const [inputError, setInputError] = useState<string | null>(null);
   const [paletteOpen, setPaletteOpen] = useState(false);
 
   const calculation: CalculationState = useMemo(() => {
@@ -35,9 +37,16 @@ export default function App() {
       <main className="mx-auto max-w-6xl px-6 py-8 space-y-6">
         <SmartInput
           onSubmit={(text) => {
-            // NL parsing lands in Phase 3; for now just echo.
-            console.log("NL input:", text);
+            try {
+              setQuery(parseNaturalLanguageQuery(text));
+              setInputError(null);
+            } catch (error) {
+              setInputError(
+                error instanceof Error ? error.message : "Unable to parse that command.",
+              );
+            }
           }}
+          error={inputError}
         />
         <Workspace query={query} setQuery={setQuery} calculation={calculation} />
       </main>
