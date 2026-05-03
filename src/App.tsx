@@ -1,13 +1,22 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import TopBar from "./components/TopBar";
 import SmartInput from "./components/SmartInput";
 import Workspace from "./components/Workspace";
-import type { Query } from "./types";
+import type { Query, Result } from "./types";
 import { mockInput, mockResult } from "./mock";
+import { run } from "./engine";
 
 export default function App() {
   const [query, setQuery] = useState<Query>({ input: mockInput, operations: [] });
   const [paletteOpen, setPaletteOpen] = useState(false);
+
+  const result: Result = useMemo(() => {
+    try {
+      return run(query);
+    } catch {
+      return mockResult;
+    }
+  }, [query]);
 
   return (
     <div className="min-h-screen bg-neutral-50 text-neutral-900 dark:bg-neutral-950 dark:text-neutral-100">
@@ -19,7 +28,7 @@ export default function App() {
             console.log("NL input:", text);
           }}
         />
-        <Workspace query={query} setQuery={setQuery} result={mockResult} />
+        <Workspace query={query} setQuery={setQuery} result={result} />
       </main>
       {paletteOpen && (
         <div
