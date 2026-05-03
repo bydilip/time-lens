@@ -1,5 +1,6 @@
 import CalendarRow from "./CalendarRow";
 import EdgeCaseBadge from "./EdgeCaseBadge";
+import TimelineView from "./TimelineView";
 import { CALENDARS, type CalendarDate, type CalendarId, type Result } from "../types";
 
 type Props = {
@@ -77,6 +78,8 @@ export default function ResultsPanel({ result, error, isLoading, inputCalendar, 
           ))}
         </div>
       )}
+
+      {result && <TimelineView steps={result.trace} />}
     </section>
   );
 }
