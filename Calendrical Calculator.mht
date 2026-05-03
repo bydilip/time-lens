@@ -1,0 +1,2291 @@
+From: <Saved by Windows Internet Explorer 7>
+Subject: Calendrical Calculator
+Date: Mon, 11 Dec 2006 09:04:25 +0530
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	type="text/html";
+	boundary="----=_NextPart_000_0000_01C71D03.5B512360"
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2900.2962
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_000_0000_01C71D03.5B512360
+Content-Type: text/html;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://www.ortelius.de/kalender/form_en2.php
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" =
+"http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<HTML><HEAD><TITLE>Calendrical Calculator</TITLE>
+<META content=3D"Calendrical Calculator" name=3DTitle>
+<META http-equiv=3Dcontent-type content=3D"text/html; =
+charset=3DISO-8859-1">
+<META content=3Den name=3Dcontent-language>
+<META lang=3Den content=3D"Form for Converting Dates" =
+name=3Ddescription>
+<META content=3D0-0-0 name=3Ddate>
+<META content=3DALL,INDEX,FOLLOW name=3Drobots>
+<META content=3D"7 days" name=3Drevisit-after>
+<META content=3D"Holger Oertel" name=3Dauthor>
+<META content=3D"Holger Oertel; =
+http://www.ortelius.de/kalender/default.php"=20
+name=3Dpublisher>
+<META content=3Dglobal name=3Ddistribution>
+<META lang=3Den=20
+content=3Dhistorians,genealogists,mathematicians,philatelists,teachers,pu=
+pils,students=20
+name=3Daudience>
+<META lang=3Den=20
+content=3Dcalendar,chronology,history,calculation,genealogy,ancestors=20
+name=3Dpage-topic>
+<META lang=3Den content=3Darticle,table name=3Dpage-type>
+<META content=3D"Holger Oertel" name=3Dcreator>
+<META content=3D"MSHTML 6.00.5730.11" name=3DGENERATOR>
+<META content=3D"=A9 2000-2006 Holger Oertel" name=3Dcopyright>
+<META lang=3Den=20
+content=3D"conversion,calculation,computation,date calculation,date =
+conversion,calendar conversion,form,interactive"=20
+name=3Dkeywords><LINK title=3DCalendrical&nbsp;Calculations =
+href=3D"calc_en.php"=20
+rel=3Dprevious><LINK title=3DCalendar&nbsp;Page href=3D"idx_en.php" =
+rel=3Dcontents><LINK=20
+title=3DCalendar&nbsp;Page href=3D"idx_en.php" rel=3Dstart><LINK =
+title=3DGlossary=20
+href=3D"gloss_en.php" rel=3Dglossary><LINK title=3DCalendar&nbsp;Page=20
+href=3D"idx_en.php" rel=3Dfirst><LINK title=3DAuthor =
+href=3D"english.php" rel=3Dlast><LINK=20
+title=3Ddeutsch href=3D"form_de2.php" rel=3Dalternate><LINK =
+title=3DAuthor=20
+href=3D"english.php" rel=3Dauthor><LINK title=3DSources =
+href=3D"lit_en.php"=20
+rel=3Dnext><LINK href=3D"http://www.ortelius.de/kalender/css/styles.css" =
+
+type=3Dtext/css rel=3Dstylesheet>
+<STYLE type=3Dtext/css></STYLE>
+<LINK media=3Dprint =
+href=3D"http://www.ortelius.de/kalender/css/styles_p.css"=20
+type=3Dtext/css rel=3Dstylesheet>
+<STYLE type=3Dtext/css></STYLE>
+
+<SCRIPT language=3DJavaScript type=3Dtext/javascript>
+<!--
+if(top.frames.length > 0)
+top.location.href=3Dself.location;
+//-->
+</SCRIPT>
+
+<SCRIPT language=3DJavaScript =
+src=3D"http://www.ortelius.de/kalender/js/code.js"=20
+type=3Dtext/javascript>
+</SCRIPT>
+
+<SCRIPT language=3DJavaScript type=3Dtext/javascript>
+<!--
+/* calendrical calculations */
+/* (c) MM...MMV Holger Oertel*/
+/*--------------------------*/
+/* sprachsensitive variablen*/
+var vorne =3D new Array(
+                        "Gregorian&nbsp;calendar",
+                        "Julian&nbsp;calendar",
+                        "Roman&nbsp;(Julian)&nbsp;calendar",
+                        "Jewish&nbsp;calendar",
+                        "Islamic&nbsp;calendar",
+                        "Coptic&nbsp;calendar",
+                        "Julian&nbsp;Day&nbsp;number&nbsp;(12h UT)",
+                        "French&nbsp;Revolutionary&nbsp;calendar",
+                        "Mayan&nbsp;calendar",
+                        "Ancient&nbsp;Egyptian&nbsp;calendar",
+                        "OF&nbsp;calendar",
+                        "day&nbsp;of&nbsp;week",
+                        "last!"
+                     );
+var months =3D new =
+Array(e,"January","February","March","April","May","June","July","August"=
+,"September","October","November","December");
+var egyptian_month =3D new Array
+("Thot","Phaophi","Athyr","Choiak","Tybi","Mechir","Phamenoth","Pharmuti"=
+,"Pachon","Payni","Epiphi","Mesori",
+ "add. day");
+var egyptian_season =3D new Array
+("Inundation","Winter","Summer","!8!");
+var ord_numb =3D new Array ("1st month of ","2nd month of ","3rd month =
+of ","4th month of ","!8!");
+
+var jewish_month =3D new Array =
+("Tishri","Kheshvan","Kislev","Tevet","Shevat","Adar","Adar =
+II","Nisan","Iyyar","Sivan","Tammuz","Av","Elul");
+var islamic_month =3D new Array ("Muharram","Safar","Rabi =
+al-Awwal","Rabi al-Akhir","Djumada 'l-Ula","Djumada =
+'l-Akhira","Radjab","Shaban","Ramadan","Shawwal","Dhu 'l-Kada","Dhu =
+'l-Hidjdja");
+var coptic_month =3D new Array =
+("Thoout","Paape","Hator","Kiahk","Tobe","Mshir","Paremhat","Parmoute","P=
+ashons","Paone","Epep","Mesore","Epag.");
+var urlaubi=3D new =
+Array(e,"Horror","Gew&ouml;hn","Endg&uuml;l","Trott","Imberg","Schlaf","B=
+r&ouml;mul","Geschwind","Pr&uuml;f");
+
+var not_supported  =3D "not in supported range";
+var dow_name =3D new =
+Array("Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sund=
+ay");
+var headline =3D "Results";
+var bof =3D "before OF";
+var vuz =3D " BCE";
+var pi =3D " Pictun  ";
+var ba =3D " Baktun  ";
+var ka =3D " Katun  ";
+var tu =3D " Tun  ";
+var ui =3D " Uinal  ";
+var ki =3D " Kin";
+var pt =3D " ";
+var form_url =3D "back";
+var language =3D "en";
+var empires =3D new Array("Italica","Hellas","Osman");
+var french_months =3D new =
+Array("Vend&eacute;miaire","Brumaire","Frimaire","Niv&ocirc;se","Pluvi&oc=
+irc;se","Vent&ocirc;se","Germinal","Flor&eacute;al","Prairial","Messidor"=
+,"Thermidor","Fructidor","jour compl.")
+/*--------------------------*/
+// -->
+</SCRIPT>
+</HEAD>
+<BODY onload=3Dschreibe_heute();><A name=3Dtop></A>
+<P class=3Dnarrowest>&nbsp;</P>
+<P class=3Dnarrowest>&nbsp;</P>
+<TABLE class=3Dnavcol width=3D"100%" align=3Dcenter>
+  <TBODY>
+  <TR>
+    <TD width=3D"2%"><A=20
+    =
+href=3D"http://www.ortelius.de/kalender/calc_en.php">&#8592;</A></TD>
+    <TD class=3Dsmalll width=3D"23%"><A=20
+      =
+href=3D"http://www.ortelius.de/kalender/calc_en.php">Calendrical&nbsp;Cal=
+culations</A></TD>
+    <TD class=3Dsmallc><A=20
+      =
+href=3D"http://www.ortelius.de/kalender/idx_en.php">Calendar&nbsp;Page</A=
+> =95=20
+      <A =
+href=3D"http://www.ortelius.de/kalender/gloss_en.php">Glossary</A> =95 =
+<A=20
+      =
+href=3D"http://www.ortelius.de/kalender/form_de2.php">deutsch</A></TD>
+    <TD class=3Dsmallr width=3D"23%"><A=20
+      =
+href=3D"http://www.ortelius.de/kalender/lit_en.php">Sources</A></TD>
+    <TD width=3D"2%"><A=20
+    =
+href=3D"http://www.ortelius.de/kalender/lit_en.php">&#8594;</A></TD></TR>=
+</TBODY></TABLE>
+<SCRIPT type=3Dtext/javascript><!--
+google_ad_client =3D "pub-4485102892567364";
+google_ad_width =3D 728;
+google_ad_height =3D 15;
+google_ad_format =3D "728x15_0ads_al_s";
+google_ad_channel =3D"";
+google_color_border =3D "FFFFF0";
+google_color_bg =3D "FFFFF0";
+google_color_link =3D "F80000";
+google_color_url =3D "F80000";
+google_color_text =3D "000000";
+//--></SCRIPT>
+
+<SCRIPT src=3D"http://pagead2.googlesyndication.com/pagead/show_ads.js"=20
+type=3Dtext/javascript>
+</SCRIPT>
+
+<H1 class=3Dheadlinecalculator>Calendrical Calculator</H1>
+<P class=3Dsmallj>Type in the date you want to convert in the line of =
+the=20
+respective calendar and click the "evaluate" button. The calendar used =
+in=20
+Britain, the U.&nbsp;S., and Australia as well as in most other =
+countries is the=20
+Gregorian calendar (first line of the form). </P>
+<P class=3Dsmallj>To convert today's date just click the "today" button. =
+</P>
+<P class=3Dsmallj>See <A=20
+href=3D"http://www.ortelius.de/kalender/form_en2.php#notes">disclaimer =
+and=20
+validity notes</A>. </P><SPAN id=3Dhier></SPAN>
+<FORM name=3Dfrm_datum action=3Dform_en2.php>
+<TABLE align=3Dcenter>
+  <TBODY>
+  <TR>
+    <TD class=3Dsmalll>&nbsp; </TD>
+    <TD class=3Dsmalll>Tag </TD>
+    <TD class=3Dsmalll colSpan=3D2>Monat </TD>
+    <TD class=3Dsmalll>Jahr </TD>
+    <TD class=3Dsmalll colSpan=3D5>&nbsp; </TD></TR>
+  <TR>
+    <TD class=3Dl><A=20
+      =
+href=3D"http://www.ortelius.de/kalender/greg_en.php">Gregorian&nbsp;calen=
+dar</A>&nbsp;=20
+    </TD>
+    <TD class=3Dl><INPUT size=3D2 name=3Dgreg_day> </TD>
+    <TD class=3Dl colSpan=3D2><SELECT size=3D1 name=3Dgreg_month> =
+<OPTION=20
+        =
+selected>January<OPTION>February<OPTION>March<OPTION>April<OPTION>May<OPT=
+ION>June<OPTION>July<OPTION>August<OPTION>September<OPTION>October<OPTION=
+>November<OPTION>December</OPTION></SELECT>=20
+    </TD>
+    <TD class=3Dl><INPUT size=3D4 name=3Dgreg_year> </TD>
+    <TD class=3Dr colSpan=3D4><INPUT onclick=3Drechne_heute() =
+type=3Dbutton value=3Dtoday> </TD>
+    <TD><INPUT =
+onclick=3D"evaluate_greg(document.frm_datum.greg_day.value,(document.frm_=
+datum.greg_month.selectedIndex * 1 + =
+1),document.frm_datum.greg_year.value)" type=3Dbutton value=3Devaluate>=20
+    </TD></TR>
+  <TR>
+    <TD class=3Dl><A=20
+      =
+href=3D"http://www.ortelius.de/kalender/jul_en.php">Julian&nbsp;calendar<=
+/A>=20
+    </TD>
+    <TD class=3Dl><INPUT size=3D2 name=3Djulian_day> </TD>
+    <TD class=3Dl colSpan=3D2><SELECT size=3D1 name=3Djulian_month> =
+<OPTION=20
+        =
+selected>January<OPTION>February<OPTION>March<OPTION>April<OPTION>May<OPT=
+ION>June<OPTION>July<OPTION>August<OPTION>September<OPTION>October<OPTION=
+>November<OPTION>December</OPTION></SELECT>=20
+    </TD>
+    <TD class=3Dl><INPUT size=3D4 name=3Djulian_year> </TD>
+    <TD class=3Dr colSpan=3D2>BCE<INPUT type=3Dradio value=3Dv =
+name=3Dv_n_uz> </TD>
+    <TD colSpan=3D2>CE<INPUT type=3Dradio CHECKED value=3Dn =
+name=3Dv_n_uz> </TD>
+    <TD><INPUT =
+onclick=3D"evaluate_julian(document.frm_datum.julian_day.value,(document.=
+frm_datum.julian_month.selectedIndex * 1 + =
+1),document.frm_datum.julian_year.value,document.frm_datum.v_n_uz[0].chec=
+ked)" type=3Dbutton value=3Devaluate>=20
+    </TD></TR>
+  <TR>
+    <TD class=3Dl><A=20
+      =
+href=3D"http://www.ortelius.de/kalender/j_uk.php">Jewish&nbsp;calendar</A=
+>=20
+    </TD>
+    <TD class=3Dl><INPUT size=3D2 name=3Djewish_day> </TD>
+    <TD class=3Dl colSpan=3D2><SELECT size=3D1 name=3Djewish_month> =
+<OPTION=20
+        =
+selected>Tishri<OPTION>Kheshvan<OPTION>Kislev<OPTION>Tevet<OPTION>Shevat<=
+OPTION>Adar<OPTION>Adar=20
+        =
+II<OPTION>Nisan<OPTION>Iyyar<OPTION>Sivan<OPTION>Tammuz<OPTION>Av<OPTION>=
+Elul</OPTION></SELECT>=20
+    </TD>
+    <TD class=3Dl><INPUT size=3D4 name=3Djewish_year> </TD>
+    <TD colSpan=3D4>&nbsp; </TD>
+    <TD><INPUT =
+onclick=3D"evaluate_jewish(document.frm_datum.jewish_day.value, =
+document.frm_datum.jewish_month.selectedIndex,document.frm_datum.jewish_y=
+ear.value)" type=3Dbutton value=3Devaluate>=20
+    </TD></TR>
+  <TR>
+    <TD class=3Dl><A=20
+      =
+href=3D"http://www.ortelius.de/kalender/isl_en.php">Islamic&nbsp;calendar=
+</A>=20
+      <A href=3D"http://www.ortelius.de/kalender/form_en2.php#01">*</A> =
+</TD>
+    <TD class=3Dl><INPUT size=3D2 name=3Dislamic_day> </TD>
+    <TD class=3Dl colSpan=3D2><SELECT size=3D1 name=3Dislamic_month> =
+<OPTION=20
+        selected>Muharram<OPTION>Safar<OPTION>Rabi al-Awwal<OPTION>Rabi=20
+        al-Akhir<OPTION>Djumada 'l-Ula<OPTION>Djumada=20
+        =
+'l-Akhira<OPTION>Radjab<OPTION>Shaban<OPTION>Ramadan<OPTION>Shawwal<OPTIO=
+N>Dhu=20
+        'l-Kada<OPTION>Dhu 'l-Hidjdja</OPTION></SELECT> </TD>
+    <TD class=3Dl><INPUT size=3D4 name=3Dislamic_year> </TD>
+    <TD colSpan=3D4>&nbsp; </TD>
+    <TD><INPUT =
+onclick=3D"evaluate_islamic(document.frm_datum.islamic_day.value, =
+document.frm_datum.islamic_month.selectedIndex,document.frm_datum.islamic=
+_year.value)" type=3Dbutton value=3Devaluate>=20
+    </TD></TR>
+  <TR>
+    <TD class=3Dl>Coptic&nbsp;calendar </TD>
+    <TD class=3Dl><INPUT size=3D2 name=3Dcoptic_day> </TD>
+    <TD class=3Dl colSpan=3D2><SELECT size=3D1 name=3Dcoptic_month> =
+<OPTION=20
+        =
+selected>Thoout<OPTION>Paape<OPTION>Hator<OPTION>Kiahk<OPTION>Tobe<OPTION=
+>Mshir<OPTION>Paremhat<OPTION>Parmoute<OPTION>Pashons<OPTION>Paone<OPTION=
+>Epep<OPTION>Mesore<OPTION>Epag.</OPTION></SELECT>=20
+    </TD>
+    <TD class=3Dl><INPUT size=3D4 name=3Dcoptic_year> </TD>
+    <TD colSpan=3D4>&nbsp; </TD>
+    <TD><INPUT =
+onclick=3D"evaluate_coptic(document.frm_datum.coptic_day.value, =
+document.frm_datum.coptic_month.selectedIndex,document.frm_datum.coptic_y=
+ear.value)" type=3Dbutton value=3Devaluate>=20
+    </TD></TR>
+  <TR>
+    <TD class=3Dl><A =
+href=3D"http://www.ortelius.de/kalender/fr_en.php">French=20
+      Revolutionary calendar</A> </TD>
+    <TD class=3Dl><INPUT size=3D2 name=3Df_day> </TD>
+    <TD class=3Dl colSpan=3D2><SELECT size=3D1 name=3Df_month> <OPTION=20
+        =
+selected>Vend=E9miaire<OPTION>Brumaire<OPTION>Frimaire<OPTION>Niv=F4se<OP=
+TION>Pluvi=F4se<OPTION>Vent=F4se<OPTION>Germinal<OPTION>Flor=E9al<OPTION>=
+Prairial<OPTION>Messidor<OPTION>Thermidor<OPTION>Fructidor<OPTION>jour=20
+        compl.</OPTION></SELECT> </TD>
+    <TD class=3Dl><SELECT size=3D1 name=3Df_year> <OPTION=20
+        =
+selected>I<OPTION>II<OPTION>III<OPTION>IV<OPTION>V<OPTION>VI<OPTION>VII<O=
+PTION>VIII<OPTION>IX<OPTION>X<OPTION>XI<OPTION>XII<OPTION>XIII<OPTION>XIV=
+</OPTION></SELECT>=20
+    </TD>
+    <TD colSpan=3D4>&nbsp; </TD>
+    <TD><INPUT =
+onclick=3D"evaluate_french(document.frm_datum.f_day.value,(document.frm_d=
+atum.f_month.selectedIndex * 1 + =
+1),document.frm_datum.f_year.selectedIndex * 1 + 1)" type=3Dbutton =
+value=3Devaluate>=20
+    </TD></TR>
+  <TR>
+    <TD class=3Dsmalll></TD>
+    <TD class=3Dsmalll colSpan=3D3>JD </TD>
+    <TD class=3Dsmalll colSpan=3D5></TD>
+    <TD></TD></TR>
+  <TR>
+    <TD class=3Dl><A=20
+      =
+href=3D"http://www.ortelius.de/kalender/jd_en.php">Julian&nbsp;Date</A> =
+</TD>
+    <TD class=3Dl colSpan=3D3><INPUT size=3D9 name=3Djulian_date> </TD>
+    <TD colSpan=3D5>&nbsp; </TD>
+    <TD><INPUT =
+onclick=3Devaluate_jd(document.frm_datum.julian_date.value) =
+type=3Dbutton value=3Devaluate>=20
+    </TD></TR>
+  <TR>
+    <TD class=3Dsmalll>&nbsp; </TD>
+    <TD class=3Dsmalll>Pictun </TD>
+    <TD class=3Dsmalll>Baktun </TD>
+    <TD class=3Dsmalll>Katun </TD>
+    <TD class=3Dsmalll>Tun </TD>
+    <TD class=3Dsmalll>Uinal </TD>
+    <TD class=3Dsmalll>Kin </TD>
+    <TD class=3Dsmalll colSpan=3D3>&nbsp; </TD></TR>
+  <TR>
+    <TD class=3Dl><A =
+href=3D"http://www.ortelius.de/kalender/maya_en.php">Mayan=20
+      calendar</A> </TD>
+    <TD class=3Dl><INPUT size=3D2 name=3Dpictun> </TD>
+    <TD class=3Dl><INPUT size=3D2 name=3Dbaktun> </TD>
+    <TD class=3Dl><INPUT size=3D2 name=3Dkatun> </TD>
+    <TD class=3Dl><INPUT size=3D2 name=3Dtun> </TD>
+    <TD class=3Dl><INPUT size=3D2 name=3Duinal> </TD>
+    <TD class=3Dl><INPUT size=3D2 name=3Dkin> </TD>
+    <TD colSpan=3D2>&nbsp; </TD>
+    <TD><INPUT =
+onclick=3Devaluate_mayan(document.frm_datum.pictun.value,document.frm_dat=
+um.baktun.value,document.frm_datum.katun.value,document.frm_datum.tun.val=
+ue,document.frm_datum.uinal.value,document.frm_datum.kin.value) =
+type=3Dbutton value=3Devaluate>=20
+    </TD></TR>
+  <TR>
+    <TD class=3Dsmalll>&nbsp; </TD>
+    <TD class=3Dsmalll>Faul </TD>
+    <TD class=3Dsmalll colSpan=3D2>Imperium </TD>
+    <TD class=3Dsmalll colSpan=3D2>Urlaubum </TD>
+    <TD class=3Dsmalll>Stre=DF </TD>
+    <TD class=3Dsmallc>&nbsp;before&nbsp;OF&nbsp; </TD>
+    <TD class=3Dsmallc>&nbsp;OF&nbsp; </TD>
+    <TD class=3Dsmalll>&nbsp; </TD></TR>
+  <TR>
+    <TD class=3Dl><A=20
+      =
+href=3D"http://www.ortelius.de/kalender/of_de.php">OF&nbsp;calendar</A> =
+</TD>
+    <TD class=3Dl><INPUT size=3D2 name=3Dfaul> </TD>
+    <TD class=3Dl colSpan=3D2><SELECT size=3D1 name=3Dimperium> <OPTION=20
+        =
+selected>&nbsp;<OPTION>Italica<OPTION>Hellas<OPTION>Osman</OPTION></SELEC=
+T>=20
+    </TD>
+    <TD class=3Dl colSpan=3D2><SELECT size=3D1 name=3Durlaubum> <OPTION=20
+        =
+selected>Horror<OPTION>Gew=F6hn<OPTION>Endg=FCl<OPTION>Trott<OPTION>Imber=
+g<OPTION>Schlaf<OPTION>Br=F6mul<OPTION>Geschwind<OPTION>Pr=FCf</OPTION></=
+SELECT>=20
+    </TD>
+    <TD class=3Dl><INPUT size=3D4 name=3Dstress> </TD>
+    <TD><INPUT type=3Dradio value=3Dv name=3Dv_n_OF> </TD>
+    <TD><INPUT type=3Dradio CHECKED value=3Dv name=3Dv_n_OF> </TD>
+    <TD><INPUT =
+onclick=3D"evaluate_of(document.frm_datum.faul.value,(document.frm_datum.=
+urlaubum.selectedIndex * 1 + =
+1),document.frm_datum.imperium.selectedIndex,document.frm_datum.stress.va=
+lue,document.frm_datum.v_n_OF[0].checked)" type=3Dbutton =
+value=3Devaluate>=20
+    </TD></TR>
+  <TR>
+    <TD>&nbsp; </TD>
+    <TD class=3Dsmalll colSpan=3D9>(The date will be considered to be =
+given in the=20
+      short form if no empire is specified.) </TD></TR>
+  <TR>
+    <TD class=3Dl colSpan=3D8>&nbsp; </TD>
+    <TD class=3Dr colSpan=3D2><INPUT type=3Dreset value=3Dreset> =
+</TD></TR>
+  <TR>
+    <TD class=3Dnarrowest>&nbsp; </TD>
+    =
+<TD>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb=
+sp;&nbsp;&nbsp;=20
+    </TD>
+    =
+<TD>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb=
+sp;&nbsp;&nbsp;=20
+    </TD>
+    =
+<TD>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb=
+sp;&nbsp;&nbsp;=20
+    </TD>
+    =
+<TD>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb=
+sp;&nbsp;&nbsp;=20
+    </TD>
+    =
+<TD>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb=
+sp;&nbsp;&nbsp;=20
+    </TD>
+    =
+<TD>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb=
+sp;&nbsp;&nbsp;=20
+    </TD>
+    <TD>&nbsp; </TD>
+    <TD>&nbsp; </TD>
+    <TD>&nbsp; </TD></TR></TBODY></TABLE></FORM>
+<H2 class=3Dsmalll><A name=3Dnotes>Disclaimer and Validity Notes</A> =
+</H2>
+<P class=3Dsmallj>No guarantee can be given for the dates computed, as =
+errors are=20
+always possible. If the result of a conversion is critical, or money, =
+time, or=20
+workforce is to be spent depending on a conversion, further sources must =
+be=20
+consulted to check the dates. </P>
+<P class=3Dsmallj>No range checking is carried out. On the results =
+window, check=20
+the date entered (printed with bold letters). For instance, a date=20
+32&nbsp;December 1999 will be treated as 1 January 2000. </P>
+<P class=3Dsmallj>Gregorian dates before 15&nbsp;October 1582 will be =
+computed but=20
+given italic as this calendar was not used before that date. </P>
+<P class=3Dsmallj>Dates of the Julian calendar before 1&nbsp;January =
+8&nbsp;CE=20
+will be printed italic because there have been some irregularities in =
+the use of=20
+the calendar before the year 761&nbsp;a.&nbsp;u.&nbsp;c., which was our=20
+8&nbsp;CE. For the same reason, Roman dates before the calends of =
+January=20
+761&nbsp;a.&nbsp;u.&nbsp;c. (1&nbsp;January 8&nbsp;CE) will not be =
+given. </P>
+<P class=3Dsmallj>The Jewish Calendar was fixed around the 10th century. =
+Thus,=20
+Jewish calendar dates up to the 10th century are printed in italic =
+letters as=20
+they probably do not correspond to the dates then used. An Adar&nbsp;II =
+given in=20
+common years will be treated as Adar. </P>
+<P class=3Dsmallj>In France, the Revolutionary calendar was officially =
+used from=20
+24&nbsp;November&nbsp;1793 until 31&nbsp;Dezember&nbsp;1805, inclusive. =
+However,=20
+it is possible to compute the dates of the Revolutionary calendar from=20
+22&nbsp;September&nbsp;1792 (which was - in theory - 1 =
+Vend=E9miaire&nbsp;I) until=20
+22&nbsp;September&nbsp;1806 (which would have been the =
+5th&nbsp;complementary=20
+day&nbsp;XIV, had the calendar not been abolished). Dates that can be =
+computed=20
+but are not in the period in which the calendar was valid are printed =
+italic.=20
+</P>
+<P class=3Dsmallj>Mayan calendar dates are computed according to the=20
+Goodman-Martinez-Thompson correlation. The Mayan date 0&nbsp;Pictun=20
+0&nbsp;Baktun 0&nbsp;Katun 0&nbsp;Tun 0&nbsp;Uinal 0&nbsp;Kin is =
+considered to=20
+correspond to 6&nbsp;September 3114&nbsp;BCE (Julian). This day is =
+described by=20
+Tzolkin date 4&nbsp;Ahau and Haab date 8&nbsp;Cumku; at least in this =
+point the=20
+different correlations agree. By leaving aside the larger Mayan time =
+units=20
+Calabtun, Kinchiltun, and Alautun, the supported range is "limited" to =
+Julian=20
+dates (JD) between 584283 and 58184282, inclusively. </P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P class=3Dsmalll>Remarks</P>
+<DIV class=3Dremark>
+<P class=3Dremarkj><A name=3D01></A>*<BR>
+<P class=3Dremarkj>The date is calculated according to a schematic =
+version of the=20
+Islamic calendar with the era 16&nbsp;July 622&nbsp;CE. Of a =
+30-year-cycle, the=20
+2nd, 5th, 7th, 10th, 13th, 16th, 18th, 21th, 24th, 26th, and 29th years =
+are leap=20
+years. </P>
+<P class=3Dremarkj><A=20
+href=3D"http://www.ortelius.de/kalender/form_en2.php#top">back</A> =
+</P></DIV>
+<P class=3Dsmalll>&nbsp;</P>
+<P class=3Dsmalll>&nbsp;<A style=3D"FONT-SIZE: 100%"=20
+href=3D"http://www.ortelius.de/kalender/form_en2.php#top">&#8593;</A>&nbs=
+p;&nbsp;<A=20
+href=3D"http://www.ortelius.de/kalender/form_en2.php#top">top of =
+page</A></P>
+<P class=3Dsmall>&nbsp;</P>
+<P class=3Dnarrowest>&nbsp;</P>
+<P class=3Dnarrowest>&nbsp;</P>
+<TABLE class=3Dnavcol width=3D"100%" align=3Dcenter>
+  <TBODY>
+  <TR>
+    <TD width=3D"2%"><A=20
+    =
+href=3D"http://www.ortelius.de/kalender/calc_en.php">&#8592;</A></TD>
+    <TD class=3Dsmalll width=3D"23%"><A=20
+      =
+href=3D"http://www.ortelius.de/kalender/calc_en.php">Calendrical&nbsp;Cal=
+culations</A></TD>
+    <TD class=3Dsmallc><A=20
+      =
+href=3D"http://www.ortelius.de/kalender/idx_en.php">Calendar&nbsp;Page</A=
+> =95=20
+      <A =
+href=3D"http://www.ortelius.de/kalender/gloss_en.php">Glossary</A> =95 =
+<A=20
+      =
+href=3D"http://www.ortelius.de/kalender/form_de2.php">deutsch</A></TD>
+    <TD class=3Dsmallr width=3D"23%"><A=20
+      =
+href=3D"http://www.ortelius.de/kalender/lit_en.php">Sources</A></TD>
+    <TD width=3D"2%"><A=20
+    =
+href=3D"http://www.ortelius.de/kalender/lit_en.php">&#8594;</A></TD></TR>=
+</TBODY></TABLE>
+<P class=3Dsmallc>&nbsp;</P>
+<P =
+class=3Dsmallc>http://www.ortelius.de/kalender/form_en2.php&nbsp;&nbsp; =
+=A9=20
+Holger Oertel 2000-2006;&nbsp;last change: 11 August 2006</P>
+<P class=3Dc><A class=3Dimage =
+href=3D"http://validator.w3.org/check?uri=3Dreferer"><IMG=20
+height=3D31 alt=3D"Valid HTML 4.01 Transitional"=20
+src=3D"http://www.w3.org/Icons/valid-html401" width=3D88></A>&nbsp; <A=20
+href=3D"http://jigsaw.w3.org/css-validator/"><IMG=20
+style=3D"BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; =
+BORDER-BOTTOM-WIDTH: 0px; WIDTH: 88px; HEIGHT: 31px; BORDER-RIGHT-WIDTH: =
+0px"=20
+alt=3D"Valid CSS!"=20
+src=3D"http://jigsaw.w3.org/css-validator/images/vcss"></A></P></BODY></H=
+TML>
+
+------=_NextPart_000_0000_01C71D03.5B512360
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: base64
+Content-Location: http://www.w3.org/Icons/valid-html401
+
+iVBORw0KGgoAAAANSUhEUgAAAFgAAAAfCAMAAABUFvrSAAAB0VBMVEUAAAAMCQQLCwsRDQYWEQgb
+FQoeGAwUFBQcHBwkHQ4sIxExJxM1KhUjIyMoKCg0MzI7OztCNBpHOBxNPR5OSz9XRSJbSCRjTyds
+VitvWCx1RzlyWy1+ZDFOTk5ST0tWUk1VVVVcXFxqXUplZWVra2tya2FwcHB7e3sAWpwIX58JYJ8O
+Y6ERZaIVaKQaa6Yebaghb6klcqopdawxea82fbE4frI+grRFhrZMi7pVkb1alL9dlsBkm8NoncRt
+ocZ0pcl8qsyWBAOZAACcCASIIBmdNiegDge3PB6mPiqFajWJbTaTdTqWeDyffz+6QiG/TCahclPA
+TifBUCjIXy/QbzfWej3Yfj+Rh2ujgkGui0WxjUa0gVi2kUi6lEq/mEyjkmuzn2e7pnLEnE7eikXO
+pFHQplPWq1XarlbesVjjlUrmm03poFDtqVTjtVrmuFzsvF70w2H5xmL+y2WDg4OXl5eYmJippZ61
+rZisrKy0tLS/v7+Crs6FsNCLtNKQt9SWu9aYvNebvtifwdqjw9uox92ryd6yzeG20OPCwsLMzMzU
+1NTA1ufG2ujN3+zT4+7d6fL/7Mbn5+fs7Ozl7vXp8fbu9Pj09PTy9/r1+Pv+/v7MzMx5jUMsAAAA
+m3RSTlP/////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////AJVWkpgAAAABYktH
+RACIBR1IAAAACXBIWXMAAABIAAAASABGyWs+AAADJ0lEQVRIx+2W+08TQRDHp1ogQBGkgqmIgmKY
+SisvEUuAQusLKajxxUVEgQYqsdzdShSChGAD8kYpbW79a529bY+WyCMN+pPf5Ob22uzntt+dmS2s
+nbo+/xKCNX68frCTa/Tdtf/g3MBaOMJYNKzpYVPTbIIu+jSsMVWMcgaHwcmYC5QImHKxfHAw1gcQ
+ZgNw+RBwrNFPsxeaFgQk4XY3kpp8nCc/1a3zOSMLrI+MOGBgZJLAMMbyjgbvoJeI37FNgJdRqocb
+1QBn1kvXU+CiUOg8KDS1HCYo5tsdlQo4jwTzFtyi6ME9ih3oi8eX0Jvks3CuvqzgzG4KbCoTPADF
+TtfRYD/OU2zFGEUv7nCjWQyry8iF6/WWx7rmygLrdnh7DHgDb3O+h0i+bmIL2W26UiC+MpLZm5cB
+Zv2VTIIrFGUsAxwIWFnRQC58Q2zgvAf9fO8mbtLWlfwpK0zwJMU8u8AI8JDwyLEPvhcQZAn20U/3
+YStukN0bvBPd3Qnau0ywHlEZUyMaTZ2O6BSjUYFRaaxFSFYqj94PCKXAMfQZDbeW0R9HD73Gi9hq
+8JmcKu9RQEqCE+hZwa6Eu2UJO8TzpgeX+Wou4Ccpbrry2siHFd6OMjM478LOw3uFrh3PTYO/IroN
+ygbEhPm8gs0HwQpARNy1SgCnyqrsUG69afCjHDyzuGnwFuJdUYJ4R6KWsXFXjpJJCVbzbBKsQFUf
+9LNQyALrDwMPpvbX2xvIbEKNuGiW4AJf7DCtaF+V5LpVCa50VkjwRVCZyD3VAgte8EN6vb2Xsrpb
+F8bNEtymZPMnYh6MGbU/Bdcme4VydjoFLgSqDhtZkga/NHnBcckNPs1umyutIm40UYZ40Y2iFNcK
+ampLYEZ6XOQMOaBPM+tDY7bijBXrgwFLweCbA/3YmDdvPXRtd3u9nWIP12sKSmdTm1doE/U1+djF
++mE4LLrDvhXWnhF4KoejqQKizAEsSk3YPkELJw2lyM8tbi5nXnhYo4uWqgyp4olkFfKLNPfUD9NX
+Ke7pn9LjQZP7F47/qal/9r9i7lh9eX9yvb6RBlefQBdOrqtXSk3wb5pxjmKbvWqoAAAAAElFTkSu
+QmCC
+
+------=_NextPart_000_0000_01C71D03.5B512360
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: base64
+Content-Location: http://jigsaw.w3.org/css-validator/images/vcss
+
+R0lGODlhWAAfAMYAAP///3OUxwxHnTZkrlR8ut/m8u7u7kxMTK6urp2dnb6+vrHD4KG32ZKr0yws
+LAAAAH19fRwcHO7y+CFVpsHP5o2NjQwMDBdNomSIwQtEnY6n0s7Ozl1dXdDb7CZZqIOfzUVwtDw8
+PGx6kW1tbczMzP/MZmOlxgBmmRh7rUqUvefv90pKSr29xpmZmbXW54S11jMzM4SEhCMcDg8MBlqc
+vWZmZu+/X4ltNjwwGG1XK9+yWa+MRkw8HsCZTM+lUltIJCwjEQwJBJx8PjGMtTk5ORwWC8OcTuu8
+XpkAAGYzAPTDYZUAAMyZM7mUSuG0Wt6xWHtzZiggEABmmQBmmQBmmQBmmQBmmQBmmQBmmQBmmQBm
+mQBmmQBmmQBmmQBmmQBmmQBmmQBmmQBmmQBmmQBmmQBmmQBmmQBmmQBmmQBmmQBmmQBmmQBmmQBm
+mQBmmQBmmQBmmQBmmQBmmQBmmQBmmQBmmQBmmQBmmQBmmQBmmQBmmQBmmQBmmQBmmQBmmQBmmSH+
+ClZhbGlkIENTUyEAIfkEAQAAfwAsAAAAAFgAHwAAB/6AJIKDhIWGh4iJiouMhX+PjyQAk5SVlpeY
+mSWbnJ2en6ChoEdGK5CRmamqqaKtrq8lpKankqu2trC5urGlp3+1t8GYu8Stsr7AwsqTxc2fx7TL
+0gDO1ZvQkLUBAgOUBAIElQUC5OXkkwYHBwgACQqU1tXYqAAL5AWTDOeUDebl3QYcPBgIIQIEePGa
+zftFiRyDSRLILfAmYAIFCtsEUABQ4YGFAxEGJkCYkNhCYN/CTbogAEPDDBoASGCp0oGFDZM4RKhU
+sthJSvouTOpAzsMkewIkAPhwb9KDCpQMvCNp4waOqzl0cNrB4yqPHpx8/PC6Q9cxJNkojRMwkSm5
+Dv4AMHADsPYDpQcGWJWwAWRg3wdBtPYYGATHQLA6ggA2/EBILlJJkEimN2mAgAAALLNsAMCDAM7f
+BHjYCMCBqk03APvYa/hHidRBylp1nPrBjRI7cDiGdeSG5N8MKTH1EPEyN6IC4IIwtzHE6RI8HuQA
+tWMg4R82SviwPpDHali+f/9OhpzpgLqiK1FgCYLj8x/SOfW44djHjRw4inQvoePG2L9AwCKEeMAl
+AwBLLNllGTkuVSJXUjjpJQRg9fU1nWHTQfcADq89wMMmOQD2yoAEohUcJQ8mB0BGbFmij0arcAIf
+d0BkVx13D5Tlg2LcZfjabp2QSGBalSAlFADICf5wyYsiXCIVSbjh9wOQ2lmFww1gbdJfVzmUtQmJ
+QijBiZDiRVNJcQ0eCM6KHuATFzkJjFQJByNA2ROZSIiJJxJLIHPJNxNNItdDyw1AgVvtRQAVAOk8
+cBAzPW3CRIlI7InELERW0o9S+QiATwEsmQMXAg9EEMJAptlZkqUlNoEpZWqpBFE3R4XmQaAAIBDS
+AxzkpeqqlIrnRC9mWuKmWpZIAFcwkXoyabBK/DSNMs06S6mY0k7LbLWdPPubmLy8eqK2uHDbyRPf
+cpItuTGae+4N4F5DbKbsPueuKD+xoO++/Pbr77//GiHwwAQXbPDBCB8cAxTikrDCwxBHLPHEFA1X
+bPHFGGf8MBFR+BIIACH5BAEKAH8ALAEAAQAkABwAAAf+gACCg4SFhoeIiYqLjI2Oj5CRkpOUiAEC
+A4MEAgSEBQKgoaCCBgcHCAAJCoULoAWCDKODDaKhmQYOD7oQERCGoAyCEqALmgITFBSXAhQAFQ8W
+BxG6CYabnYIXAhiDAhkaABLa2A4WG4IcEYexF4IdoB6CrQISAB+ugg8Vgwarhp8Cit0D1QEABkwA
+AH4Y9MBAowECAgCAqK0BAA8CLG4S4KEZAAeO7nkYFhHTOwEFQYhqFsLRyXsDFHIkREEbCGePtGlb
+CBEUN0IH6Z1zFBQlgGUBC8ViBmleOwAnBRhaKsJQP0QkfwIYd9TDK4OgElQjxGFEok3FBB0MpnIA
+hYE8NyPsA1DqgS9EtOrBEvCqgDZRBRE8iBBCF8hEBbAJyyRvo4e0ABBMe8DBoaKvgzALK1ips+fP
+oEOLDh0IADs=
+
+------=_NextPart_000_0000_01C71D03.5B512360
+Content-Type: text/css;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://www.ortelius.de/kalender/css/styles.css
+
+BODY {
+	MARGIN: 0pt 30pt 15pt; COLOR: #000000; BACKGROUND-COLOR: #fffff0
+}
+P {
+	FONT-FAMILY: Verdana,Arial,sans-serif; TEXT-ALIGN: justify
+}
+H1 {
+	FONT-FAMILY: Verdana,Arial,sans-serif; TEXT-ALIGN: justify
+}
+H2 {
+	FONT-FAMILY: Verdana,Arial,sans-serif; TEXT-ALIGN: justify
+}
+H3 {
+	FONT-FAMILY: Verdana,Arial,sans-serif; TEXT-ALIGN: justify
+}
+H4 {
+	FONT-FAMILY: Verdana,Arial,sans-serif; TEXT-ALIGN: justify
+}
+UL {
+	FONT-FAMILY: Verdana,Arial,sans-serif; TEXT-ALIGN: justify
+}
+OL {
+	FONT-FAMILY: Verdana,Arial,sans-serif; TEXT-ALIGN: justify
+}
+LI {
+	FONT-FAMILY: Verdana,Arial,sans-serif; TEXT-ALIGN: justify
+}
+DIV {
+	FONT-FAMILY: Verdana,Arial,sans-serif; TEXT-ALIGN: justify
+}
+ADDRESS {
+	FONT-FAMILY: Verdana,Arial,sans-serif; TEXT-ALIGN: justify
+}
+BLOCKQUOTE {
+	FONT-FAMILY: Verdana,Arial,sans-serif; TEXT-ALIGN: justify
+}
+NOBR {
+	FONT-FAMILY: Verdana,Arial,sans-serif; TEXT-ALIGN: justify
+}
+NOSCRIPT {
+	FONT-FAMILY: Verdana,Arial,sans-serif; TEXT-ALIGN: justify
+}
+FORM {
+	FONT-FAMILY: Verdana,Arial,sans-serif; TEXT-ALIGN: justify
+}
+CODE {
+	MARGIN-TOP: 100mm; FONT-SIZE: 11pt; FONT-FAMILY: "Courier =
+New",Courier,monospace; TEXT-ALIGN: left
+}
+P {
+	FONT-SIZE: 10pt; LINE-HEIGHT: 15pt; FONT-STYLE: normal
+}
+UL {
+	FONT-SIZE: 10pt; LINE-HEIGHT: 15pt; FONT-STYLE: normal
+}
+OL {
+	FONT-SIZE: 10pt; LINE-HEIGHT: 15pt; FONT-STYLE: normal
+}
+LI {
+	FONT-SIZE: 10pt; LINE-HEIGHT: 15pt; FONT-STYLE: normal
+}
+DIV {
+	FONT-SIZE: 10pt; LINE-HEIGHT: 15pt; FONT-STYLE: normal
+}
+NOSCRIPT {
+	FONT-SIZE: 10pt; LINE-HEIGHT: 15pt; FONT-STYLE: normal
+}
+FORM {
+	FONT-SIZE: 10pt; LINE-HEIGHT: 15pt; FONT-STYLE: normal
+}
+P.gl {
+	MARGIN-LEFT: 30pt; TEXT-INDENT: -30pt
+}
+INPUT {
+	FONT-SIZE: 10pt; FONT-FAMILY: Verdana,Arial,sans-serif
+}
+TR {
+	FONT-SIZE: 10pt; FONT-STYLE: normal; FONT-FAMILY: =
+Verdana,Arial,sans-serif; WHITE-SPACE: nowrap; TEXT-ALIGN: center; =
+TEXT-DECORATION: none
+}
+TD {
+	FONT-SIZE: 10pt; FONT-STYLE: normal; FONT-FAMILY: =
+Verdana,Arial,sans-serif; WHITE-SPACE: nowrap; TEXT-ALIGN: center; =
+TEXT-DECORATION: none
+}
+TH {
+	FONT-SIZE: 10pt; FONT-STYLE: normal; FONT-FAMILY: =
+Verdana,Arial,sans-serif; WHITE-SPACE: nowrap; TEXT-ALIGN: center; =
+TEXT-DECORATION: none
+}
+TH {
+	FONT-WEIGHT: bold
+}
+P {
+	MARGIN-TOP: 6pt; MARGIN-BOTTOM: 0pt
+}
+NOSCRIPT {
+	MARGIN-TOP: 6pt; MARGIN-BOTTOM: 0pt
+}
+UL {
+	MARGIN-TOP: 6pt; MARGIN-BOTTOM: 0pt
+}
+OL {
+	MARGIN-TOP: 6pt; MARGIN-BOTTOM: 0pt
+}
+DIV {
+	MARGIN-TOP: 6pt; MARGIN-BOTTOM: 0pt
+}
+ADDRESS {
+	MARGIN-TOP: 6pt; MARGIN-BOTTOM: 0pt
+}
+NOBR {
+	MARGIN-TOP: 6pt; MARGIN-BOTTOM: 0pt
+}
+LI {
+	MARGIN-TOP: 3pt; MARGIN-BOTTOM: 0pt; MARGIN-RIGHT: 30pt
+}
+UL {
+	LIST-STYLE-TYPE: disc
+}
+VAR {
+	FONT-STYLE: italic
+}
+SUB {
+	FONT-SIZE: 8pt; VERTICAL-ALIGN: sub
+}
+SUP {
+	FONT-SIZE: 8pt; VERTICAL-ALIGN: super
+}
+SUP.small {
+	FONT-SIZE: 7pt; VERTICAL-ALIGN: super
+}
+B {
+	FONT-WEIGHT: bold; FONT-FAMILY: Verdana,Arial,sans-serif; =
+BACKGROUND-COLOR: #00ffff
+}
+STRONG {
+	FONT-WEIGHT: bold
+}
+I {
+	COLOR: #000000; FONT-STYLE: italic; BACKGROUND-COLOR: #00ffff
+}
+EM {
+	FONT-STYLE: italic
+}
+H1 {
+	MARGIN-TOP: 12pt; FONT-WEIGHT: bold; FONT-SIZE: 14pt; MARGIN-BOTTOM: =
+0pt; FONT-FAMILY: Verdana,Arial,sans-serif; TEXT-ALIGN: left
+}
+H2 {
+	MARGIN-TOP: 12pt; FONT-WEIGHT: bold; FONT-SIZE: 10pt; MARGIN-BOTTOM: =
+0pt; FONT-FAMILY: Verdana,Arial,sans-serif; TEXT-ALIGN: left
+}
+H3 {
+	MARGIN-TOP: 12pt; FONT-WEIGHT: normal; FONT-SIZE: 10pt; MARGIN-BOTTOM: =
+0pt; FONT-STYLE: italic; TEXT-ALIGN: left
+}
+H3.xpl {
+	FONT-WEIGHT: normal; FONT-STYLE: italic; TEXT-ALIGN: left
+}
+H4 {
+	MARGIN-TOP: 12pt; FONT-WEIGHT: normal; FONT-SIZE: 10pt; MARGIN-BOTTOM: =
+0pt; FONT-STYLE: italic; TEXT-ALIGN: left
+}
+PRE {
+	FONT-SIZE: 10pt; COLOR: #0000c0; FONT-FAMILY: "Courier =
+New",Courier,monospace; BACKGROUND-COLOR: #fffff0
+}
+TT {
+	FONT-SIZE: 10pt; COLOR: #0000c0; FONT-FAMILY: "Courier =
+New",Courier,monospace; BACKGROUND-COLOR: #fffff0
+}
+.code {
+	BORDER-RIGHT: #000000 1px solid; PADDING-RIGHT: 10pt; BORDER-TOP: =
+#000000 1px solid; PADDING-LEFT: 10pt; PADDING-BOTTOM: 10pt; MARGIN: =
+12pt 20pt; BORDER-LEFT: #000000 1px solid; PADDING-TOP: 10pt; =
+BORDER-BOTTOM: #000000 1px solid; WHITE-SPACE: nowrap
+}
+TD.xplcode {
+	COLOR: #000000; BACKGROUND-COLOR: #eeeeff
+}
+.doc {
+	BACKGROUND-COLOR: #eeeeee
+}
+.l {
+	TEXT-ALIGN: left
+}
+.r {
+	TEXT-ALIGN: right
+}
+.c {
+	TEXT-ALIGN: center
+}
+.figc {
+	PADDING-BOTTOM: 20px; PADDING-TOP: 20px
+}
+.tabc {
+	PADDING-BOTTOM: 10px; PADDING-TOP: 10px; TEXT-ALIGN: center
+}
+.j {
+	TEXT-ALIGN: justify
+}
+.f {
+	LINE-HEIGHT: 16pt; TEXT-ALIGN: center
+}
+.abartig {
+	MARGIN-TOP: 100px; FONT-SIZE: 48pt; MARGIN-BOTTOM: 100px
+}
+P.glossary {
+	FONT-WEIGHT: bold; FONT-SIZE: 12pt
+}
+DIV.remark {
+	MARGIN-LEFT: 5pt; MARGIN-RIGHT: 30pt
+}
+.coloured {
+	FONT-SIZE: 7pt; COLOR: #ffffe6; BACKGROUND-COLOR: #ff7777
+}
+.navcol {
+	MARGIN-TOP: 4pt; MARGIN-BOTTOM: 4pt; COLOR: #000000; WHITE-SPACE: =
+nowrap; BACKGROUND-COLOR: #ffffc0
+}
+.tt {
+	MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; LINE-HEIGHT: 1px
+}
+.remarkj {
+	MARGIN-TOP: 4pt; FONT-SIZE: 8pt; MARGIN-BOTTOM: 0pt; LINE-HEIGHT: 10pt; =
+WHITE-SPACE: normal; TEXT-ALIGN: justify
+}
+.small {
+	MARGIN-TOP: 4pt; FONT-SIZE: 8pt; MARGIN-BOTTOM: 0pt; LINE-HEIGHT: 10pt; =
+WHITE-SPACE: normal; TEXT-ALIGN: center
+}
+.smalll {
+	MARGIN-TOP: 4pt; FONT-SIZE: 8pt; MARGIN-BOTTOM: 0pt; LINE-HEIGHT: 10pt; =
+WHITE-SPACE: normal; TEXT-ALIGN: left
+}
+.smallestl {
+	MARGIN-TOP: 0pt; FONT-SIZE: 8pt; MARGIN-BOTTOM: 0pt; LINE-HEIGHT: 10pt; =
+WHITE-SPACE: normal; TEXT-ALIGN: left
+}
+.smallr {
+	MARGIN-TOP: 4pt; FONT-SIZE: 8pt; MARGIN-BOTTOM: 0pt; LINE-HEIGHT: 10pt; =
+WHITE-SPACE: normal; TEXT-ALIGN: right
+}
+.smallc {
+	MARGIN-TOP: 4pt; FONT-SIZE: 8pt; MARGIN-BOTTOM: 0pt; LINE-HEIGHT: 10pt; =
+WHITE-SPACE: normal; TEXT-ALIGN: center
+}
+.smallj {
+	MARGIN-TOP: 4pt; FONT-SIZE: 8pt; MARGIN-BOTTOM: 0pt; LINE-HEIGHT: 10pt; =
+WHITE-SPACE: normal; TEXT-ALIGN: justify
+}
+.narrow {
+	MARGIN-TOP: 4pt; MARGIN-BOTTOM: 6pt
+}
+.narrowest {
+	MARGIN-TOP: 0pt; MARGIN-BOTTOM: 0pt; LINE-HEIGHT: 3pt
+}
+.narrowl {
+	MARGIN-TOP: 4pt; MARGIN-BOTTOM: 0pt; VERTICAL-ALIGN: top; LINE-HEIGHT: =
+10pt; WHITE-SPACE: normal; TEXT-ALIGN: left
+}
+.narrowr {
+	MARGIN-TOP: 4pt; MARGIN-BOTTOM: 0pt; VERTICAL-ALIGN: top; LINE-HEIGHT: =
+10pt; WHITE-SPACE: normal; TEXT-ALIGN: right
+}
+.headlinecalculator {
+	MARGIN-TOP: 2pt; MARGIN-BOTTOM: 0pt
+}
+.border {
+	BORDER-RIGHT: #000000 1px solid; BORDER-TOP: #000000 1px solid; =
+BORDER-LEFT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid
+}
+.narrowletters {
+	LETTER-SPACING: -1pt
+}
+.nw {
+	WHITE-SPACE: nowrap
+}
+.w {
+	WHITE-SPACE: normal
+}
+.underline {
+	TEXT-DECORATION: underline
+}
+.bordertop {
+	BORDER-TOP: 1pt solid
+}
+.borderbottom {
+	BORDER-BOTTOM: 1pt solid
+}
+PRE.normal {
+	COLOR: #000000; BACKGROUND-COLOR: #fffff0
+}
+IMG {
+	VERTICAL-ALIGN: middle
+}
+A:link {
+	COLOR: #f80000; TEXT-DECORATION: none
+}
+A:visited {
+	COLOR: #b80000; TEXT-DECORATION: none
+}
+A:active {
+	COLOR: #800000; TEXT-DECORATION: none
+}
+A.gl {
+	COLOR: #000000; FONT-STYLE: italic; TEXT-DECORATION: none
+}
+A.image {
+	COLOR: #fffff0; BACKGROUND-COLOR: #fffff0
+}
+A.an {
+	TEXT-DECORATION: none
+}
+A.sub {
+	FONT-SIZE: 8pt
+}
+
+------=_NextPart_000_0000_01C71D03.5B512360
+Content-Type: text/css;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://www.ortelius.de/kalender/css/styles_p.css
+
+BODY {
+	MARGIN: 0pt 30pt 15pt; COLOR: #000000; BACKGROUND-COLOR: #ffffe6
+}
+P {
+	FONT-FAMILY: "Times New Roman",Times,serif; TEXT-ALIGN: justify
+}
+H1 {
+	FONT-FAMILY: "Times New Roman",Times,serif; TEXT-ALIGN: justify
+}
+H2 {
+	FONT-FAMILY: "Times New Roman",Times,serif; TEXT-ALIGN: justify
+}
+H3 {
+	FONT-FAMILY: "Times New Roman",Times,serif; TEXT-ALIGN: justify
+}
+H4 {
+	FONT-FAMILY: "Times New Roman",Times,serif; TEXT-ALIGN: justify
+}
+UL {
+	FONT-FAMILY: "Times New Roman",Times,serif; TEXT-ALIGN: justify
+}
+OL {
+	FONT-FAMILY: "Times New Roman",Times,serif; TEXT-ALIGN: justify
+}
+LI {
+	FONT-FAMILY: "Times New Roman",Times,serif; TEXT-ALIGN: justify
+}
+DIV {
+	FONT-FAMILY: "Times New Roman",Times,serif; TEXT-ALIGN: justify
+}
+ADDRESS {
+	FONT-FAMILY: "Times New Roman",Times,serif; TEXT-ALIGN: justify
+}
+BLOCKQUOTE {
+	FONT-FAMILY: "Times New Roman",Times,serif; TEXT-ALIGN: justify
+}
+NOBR {
+	FONT-FAMILY: "Times New Roman",Times,serif; TEXT-ALIGN: justify
+}
+NOSCRIPT {
+	FONT-FAMILY: "Times New Roman",Times,serif; TEXT-ALIGN: justify
+}
+FORM {
+	FONT-FAMILY: "Times New Roman",Times,serif; TEXT-ALIGN: justify
+}
+CODE {
+	MARGIN-TOP: 100mm; FONT-SIZE: 11pt; FONT-FAMILY: "Courier =
+New",Courier,monospace; TEXT-ALIGN: left
+}
+P {
+	FONT-SIZE: 10pt; LINE-HEIGHT: 15pt; FONT-STYLE: normal
+}
+UL {
+	FONT-SIZE: 10pt; LINE-HEIGHT: 15pt; FONT-STYLE: normal
+}
+OL {
+	FONT-SIZE: 10pt; LINE-HEIGHT: 15pt; FONT-STYLE: normal
+}
+LI {
+	FONT-SIZE: 10pt; LINE-HEIGHT: 15pt; FONT-STYLE: normal
+}
+DIV {
+	FONT-SIZE: 10pt; LINE-HEIGHT: 15pt; FONT-STYLE: normal
+}
+NOSCRIPT {
+	FONT-SIZE: 10pt; LINE-HEIGHT: 15pt; FONT-STYLE: normal
+}
+FORM {
+	FONT-SIZE: 10pt; LINE-HEIGHT: 15pt; FONT-STYLE: normal
+}
+P.gl {
+	MARGIN-LEFT: 30pt; TEXT-INDENT: -30pt
+}
+INPUT {
+	FONT-SIZE: 10pt; FONT-FAMILY: "Times New Roman",Times,serif
+}
+TR {
+	FONT-SIZE: 10pt; FONT-STYLE: normal; FONT-FAMILY: "Times New =
+Roman",Times,serif; WHITE-SPACE: nowrap; TEXT-ALIGN: center; =
+TEXT-DECORATION: none
+}
+TD {
+	FONT-SIZE: 10pt; FONT-STYLE: normal; FONT-FAMILY: "Times New =
+Roman",Times,serif; WHITE-SPACE: nowrap; TEXT-ALIGN: center; =
+TEXT-DECORATION: none
+}
+TH {
+	FONT-SIZE: 10pt; FONT-STYLE: normal; FONT-FAMILY: "Times New =
+Roman",Times,serif; WHITE-SPACE: nowrap; TEXT-ALIGN: center; =
+TEXT-DECORATION: none
+}
+TH {
+	FONT-WEIGHT: bold
+}
+P {
+	MARGIN-TOP: 6pt; MARGIN-BOTTOM: 0pt
+}
+NOSCRIPT {
+	MARGIN-TOP: 6pt; MARGIN-BOTTOM: 0pt
+}
+UL {
+	MARGIN-TOP: 6pt; MARGIN-BOTTOM: 0pt
+}
+OL {
+	MARGIN-TOP: 6pt; MARGIN-BOTTOM: 0pt
+}
+DIV {
+	MARGIN-TOP: 6pt; MARGIN-BOTTOM: 0pt
+}
+ADDRESS {
+	MARGIN-TOP: 6pt; MARGIN-BOTTOM: 0pt
+}
+NOBR {
+	MARGIN-TOP: 6pt; MARGIN-BOTTOM: 0pt
+}
+LI {
+	MARGIN-TOP: 3pt; MARGIN-BOTTOM: 0pt
+}
+UL {
+	LIST-STYLE-TYPE: disc
+}
+VAR {
+	FONT-STYLE: italic
+}
+SUB {
+	FONT-SIZE: 8pt; VERTICAL-ALIGN: sub
+}
+SUP {
+	FONT-SIZE: 8pt; VERTICAL-ALIGN: super
+}
+B {
+	FONT-WEIGHT: bold; COLOR: #000000; FONT-FAMILY: "Times New =
+Roman",Times,serif; BACKGROUND-COLOR: #00ffff
+}
+STRONG {
+	FONT-WEIGHT: bold
+}
+I {
+	COLOR: #000000; FONT-STYLE: italic; BACKGROUND-COLOR: #00ffff
+}
+EM {
+	FONT-STYLE: italic
+}
+H1 {
+	MARGIN-TOP: 12pt; FONT-WEIGHT: bold; FONT-SIZE: 14pt; MARGIN-BOTTOM: =
+0pt; FONT-FAMILY: "Times New Roman",Times,serif; TEXT-ALIGN: left
+}
+H2 {
+	MARGIN-TOP: 12pt; FONT-WEIGHT: bold; FONT-SIZE: 10pt; MARGIN-BOTTOM: =
+0pt; FONT-FAMILY: "Times New Roman",Times,serif; TEXT-ALIGN: left
+}
+H3 {
+	MARGIN-TOP: 12pt; FONT-WEIGHT: normal; FONT-SIZE: 10pt; MARGIN-BOTTOM: =
+0pt; FONT-STYLE: italic; TEXT-ALIGN: left
+}
+H3.xpl {
+	FONT-WEIGHT: normal; FONT-STYLE: italic; TEXT-ALIGN: left
+}
+H4 {
+	MARGIN-TOP: 12pt; FONT-WEIGHT: normal; FONT-SIZE: 10pt; MARGIN-BOTTOM: =
+0pt; FONT-STYLE: italic; TEXT-ALIGN: left
+}
+PRE {
+	FONT-SIZE: 10pt; COLOR: #0000c0; FONT-FAMILY: "Courier =
+New",Courier,monospace; BACKGROUND-COLOR: #fffff0
+}
+TT {
+	FONT-SIZE: 10pt; COLOR: #0000c0; FONT-FAMILY: "Courier =
+New",Courier,monospace; BACKGROUND-COLOR: #fffff0
+}
+.code {
+	BORDER-RIGHT: #000000 1px solid; PADDING-RIGHT: 10pt; BORDER-TOP: =
+#000000 1px solid; PADDING-LEFT: 10pt; PADDING-BOTTOM: 10pt; MARGIN: =
+12pt 20pt; BORDER-LEFT: #000000 1px solid; PADDING-TOP: 10pt; =
+BORDER-BOTTOM: #000000 1px solid; WHITE-SPACE: nowrap
+}
+TD.xplcode {
+	COLOR: #000000; BACKGROUND-COLOR: #eeeeff
+}
+.doc {
+	BACKGROUND-COLOR: #eeeeee
+}
+.l {
+	TEXT-ALIGN: left
+}
+.r {
+	TEXT-ALIGN: right
+}
+.c {
+	TEXT-ALIGN: center
+}
+.figc {
+	PADDING-RIGHT: 100px; PADDING-LEFT: 100px; PADDING-BOTTOM: 20px; =
+PADDING-TOP: 20px; TEXT-ALIGN: center
+}
+.tabc {
+	PADDING-BOTTOM: 10px; PADDING-TOP: 10px; TEXT-ALIGN: center
+}
+.j {
+	TEXT-ALIGN: justify
+}
+.f {
+	LINE-HEIGHT: 16pt; TEXT-ALIGN: center
+}
+.abartig {
+	MARGIN-TOP: 100px; FONT-SIZE: 48pt; MARGIN-BOTTOM: 100px
+}
+DIV.remark {
+	MARGIN-LEFT: 5pt; MARGIN-RIGHT: 30pt
+}
+.coloured {
+	FONT-SIZE: 7pt; COLOR: #ffffe6; BACKGROUND-COLOR: #ff7777
+}
+.tt {
+	MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; LINE-HEIGHT: 1px
+}
+.remarkj {
+	MARGIN-TOP: 4pt; FONT-SIZE: 8pt; MARGIN-BOTTOM: 0pt; LINE-HEIGHT: 10pt; =
+WHITE-SPACE: normal; TEXT-ALIGN: justify
+}
+.small {
+	MARGIN-TOP: 4pt; FONT-SIZE: 8pt; MARGIN-BOTTOM: 0pt; LINE-HEIGHT: 10pt; =
+WHITE-SPACE: normal; TEXT-ALIGN: center
+}
+.smalll {
+	MARGIN-TOP: 4pt; FONT-SIZE: 8pt; MARGIN-BOTTOM: 0pt; LINE-HEIGHT: 10pt; =
+WHITE-SPACE: normal; TEXT-ALIGN: left
+}
+.smallr {
+	MARGIN-TOP: 4pt; FONT-SIZE: 8pt; MARGIN-BOTTOM: 0pt; LINE-HEIGHT: 10pt; =
+WHITE-SPACE: normal; TEXT-ALIGN: right
+}
+.smallc {
+	MARGIN-TOP: 4pt; FONT-SIZE: 8pt; MARGIN-BOTTOM: 0pt; LINE-HEIGHT: 10pt; =
+WHITE-SPACE: normal; TEXT-ALIGN: center
+}
+.smallj {
+	MARGIN-TOP: 4pt; FONT-SIZE: 8pt; MARGIN-BOTTOM: 0pt; LINE-HEIGHT: 10pt; =
+WHITE-SPACE: normal; TEXT-ALIGN: justify
+}
+.narrow {
+	MARGIN-TOP: 4pt; MARGIN-BOTTOM: 6pt
+}
+.narrowest {
+	MARGIN-TOP: 0pt; MARGIN-BOTTOM: 0pt; LINE-HEIGHT: 3pt
+}
+.headlinecalculator {
+	MARGIN-TOP: 2pt; MARGIN-BOTTOM: 0pt
+}
+.border {
+	BORDER-RIGHT: #000000 1px solid; BORDER-TOP: #000000 1px solid; =
+BORDER-LEFT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid
+}
+.narrowletters {
+	LETTER-SPACING: -1pt
+}
+.nw {
+	WHITE-SPACE: nowrap
+}
+.w {
+	WHITE-SPACE: normal
+}
+PRE.normal {
+	COLOR: #000000; BACKGROUND-COLOR: #fffff0
+}
+IMG {
+	VERTICAL-ALIGN: middle
+}
+A:link {
+	COLOR: #000000; TEXT-DECORATION: underline
+}
+A:visited {
+	COLOR: #000000; TEXT-DECORATION: underline
+}
+A:active {
+	COLOR: #000000; TEXT-DECORATION: underline
+}
+A.gl {
+	COLOR: #000000; FONT-STYLE: italic; BACKGROUND-COLOR: #fffff0; =
+TEXT-DECORATION: none
+}
+A.an {
+	TEXT-DECORATION: none
+}
+A.sub {
+	FONT-SIZE: 8pt
+}
+
+------=_NextPart_000_0000_01C71D03.5B512360
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://www.ortelius.de/kalender/js/code.js
+
+/* (c) Holger Oertel MM ... MMIII */
+var e =3D "?";
+var browser_test =3D "Micr";
+var browser =3D navigator.appName.slice(0,4);
+var empire_offset =3D new Array(0,3,10);
+var roman_f =3D new Array =
+("","I","II","III","IV","V","VI","VII","VIII","IX","X","XI","XII","XIII",=
+"XIV","XV");
+var roman_1 =3D new Array =
+("","I","II","III","IIII","V","VI","VII","VIII","IX");
+var roman_10 =3D new Array =
+("","X","XX","XXX","XL","L","LX","LXX","LXXX","XC");
+var roman_100 =3D new Array =
+("","C","CC","CCC","CD","D","DC","DCC","DCCC","CM");
+var roman_months =3D new Array
+("DEC.","IAN.","FEB.","MAR.","APR.","MAI.","IVN.","IVL.","AVG.","SEP.","O=
+CT.","NOV.","DEC.");
+var mayan_day =3D new Array =
+("Imix","Ik","Akbal","Kan","Chicchan","Cimi","Manik","Lamat","Muluc","Oc"=
+,"Chuen","Eb","Ben","Ix","Men","Cib","Caban","Eznab","Cauac","Ahau");
+var mayan_month =3D new Array
+("Pop","Uo","Zip","Zotz","Tzec","Xul","Yaxkin","Mol","Chen","Yax",
+ "Zac","Ceh","Mac","Kankin","Muan","Pax","Kayab","Cumku","Uayeb");
+var jmd0 =3D new Array (0,30,59,88,117,147,0,176,206,235,265,294,324);
+var jmd1 =3D new Array (0,30,59,89,118,148,0,177,207,236,266,295,325);
+var jmd2 =3D new Array (0,30,60,90,119,149,0,178,208,237,267,296,326);
+var jmd3 =3D new Array (0,30,59,88,117,147,177,206,236,265,295,324,354);
+var jmd4 =3D new Array (0,30,59,89,118,148,178,207,237,266,296,325,355);
+var jmd5 =3D new Array (0,30,60,90,119,149,179,208,238,267,297,326,356);
+var jewish_month_days =3D new Array (jmd0,jmd1,jmd2,jmd3,jmd4,jmd5);
+var fl =3D "Faul ";
+var mk =3D "!";
+var mille =3D "M";
+var sp =3D " ";
+
+var greg_x =3D 0;
+var jul_x =3D 1;
+var rom_x =3D 2;
+var jew_x =3D 3;
+var isl_x =3D 4;
+var copt_x =3D 5;
+var jd_x =3D 6;
+var fr_x =3D 7;
+var my_x =3D 8;
+var egypt_x =3D 9;
+var of_x =3D 10;
+var dow_x =3D 11;
+var last =3D 11;
+
+function islamic_leap_year(year)
+{
+var rem30 =3D year % 30;
+var result =3D ((rem30 =3D=3D 1) || (rem30 =3D=3D 4) || (rem30 =3D=3D 6) =
+|| (rem30 =3D=3D 9) || (rem30 =3D=3D 12) || (rem30 =3D=3D 15) || (rem30 =
+=3D=3D 17) || (rem30 =3D=3D 20) || (rem30 =3D=3D 23) || (rem30 =3D=3D =
+25) || (rem30 =3D=3D 28));
+return result;
+}
+
+
+function elapsed_time19(year)
+{
+var t =3D new Array(29,12,793);
+var n19 =3D year % 19;
+var moladot =3D division((n19 * 12.36 + 0.77),1);
+var result =3D dhp_mult(moladot,t);
+return result;
+}
+
+function year_after_leap_year(year)
+{
+var rem =3D year % 19;
+var result =3D ((rem =3D=3D 1) || (rem =3D=3D 4) || (rem =3D=3D 7) || =
+(rem =3D=3D 9) || (rem =3D=3D 12) || (rem =3D=3D 15) || (rem =3D=3D =
+18));
+return result;
+}
+
+function common_year(year)
+{
+var rem =3D year % 19;
+var result =3D ((rem !=3D 0) && (rem !=3D 3) && (rem !=3D 6) && (rem =
+!=3D 8) && (rem !=3D 11) && (rem !=3D 14) && (rem !=3D 17));
+return result;
+}
+
+function elapsed_time235(year)
+{
+var t =3D new Array(6939,16,595);
+var moladot =3D division(year,19);
+var result =3D dhp_mult(moladot,t);
+return result;
+}
+
+function molad(year)
+{
+var t0 =3D new Array(118,7,695);
+var t1 =3D elapsed_time235(year);
+var t2 =3D elapsed_time19(year);
+var t3 =3D dhp_add(t1,t2);
+var result =3D dhp_add(t0,t3);
+result[0] =3D result[0] - 500;
+return result;
+}
+
+function new_year(year)
+{
+var molad_tishri_dhp =3D molad(year);
+var result =3D molad_tishri_dhp[0];
+if (molad_tishri_dhp[1] >=3D 18) {result++};
+var dow =3D result % 7;
+if ((dow =3D=3D 1) || (dow =3D=3D 4) || (dow =3D=3D 6)) {result++};
+var time_hp =3D molad_tishri_dhp[1] * 10000 + 1 * molad_tishri_dhp[2];
+var dow2 =3D molad_tishri_dhp[0] % 7;
+if ((common_year(year)) && (dow2 =3D=3D 3) && (time_hp >=3D 90204) && =
+(time_hp < 180000)) {result =3D 1 * molad_tishri_dhp[0] + 2};
+if ((year_after_leap_year(year)) && (dow2 =3D=3D 2) && (time_hp >=3D =
+150589) && (time_hp < 180000))
+  {result =3D 1 * molad_tishri_dhp[0] + 1};
+result =3D 1 * result + 347996;
+return result;
+}
+
+function dhp_mult(n,dhp)
+{
+var d =3D n * dhp[0];
+var h =3D n * dhp[1];
+var p =3D n * dhp[2];
+dhp[2] =3D p % 1080;
+h =3D h + division(p,1080);
+dhp[1] =3D h % 24;
+dhp[0] =3D d + division(h,24);
+return dhp;
+}
+
+function dhp_add(dhp1,dhp2)
+{
+var d =3D dhp1[0] + dhp2[0];
+var h =3D dhp1[1] + dhp2[1];
+var p =3D dhp1[2] + dhp2[2];
+dhp1[2] =3D p % 1080;
+h =3D h + division(p,1080);
+dhp1[1] =3D h % 24;
+dhp1[0] =3D d + division(h,24);
+return dhp1;
+}
+
+function dhp_string(dhp)
+{
+var s =3D dhp[0] + "D " + dhp[1] + "H " + dhp[2] + "P";
+return s;
+}
+
+function index_from_length(l)
+{
+var result =3D 3 * (division(l - 300,80)) + 1 * (l % 10) - 3;
+return result;
+}
+
+function jewish_from_jd(jd)
+{
+var approx_year =3D division((jd - 347998),365.25);
+approx_year+=3D2;
+while (new_year(approx_year) > jd) {approx_year--};
+var year_length =3D new_year(approx_year * 1 + 1) - =
+new_year(approx_year);
+var d =3D jd - new_year(approx_year);
+d++;
+var ix =3D index_from_length(year_length);
+var m =3D 0;
+while ((jewish_month_days[ix][m]) < d) {m++};
+m--;
+if ((jewish_month_days[ix][m] =3D=3D 0) && (m > 0)) {m--};
+var result =3D (d - jewish_month_days[ix][m]) + pt + sp + =
+jewish_month[m] + sp + approx_year;
+return result;
+}
+
+function division(zaehler,nenner)
+{
+var quotient =3D zaehler / nenner;
+var rest =3D zaehler % nenner;
+var result =3D Math.round(quotient - (rest / nenner));
+return result;
+}
+
+function roman_number(n)
+{
+var thousands =3D division(n,1000);
+var hundreds  =3D division((n % 1000),100);
+var tens  =3D division((n % 100),10);
+var ones  =3D n % 10;
+var result  =3D ""
+var i =3D 1;
+if (thousands < 4)
+{
+while (i <=3D thousands){result =3D result + mille; i++;}
+result =3D result + roman_100[hundreds] + roman_10[tens] + =
+roman_1[ones];
+if (n =3D=3D 0) result =3D e;
+}
+else result =3D "(" + n + ")";
+return result;
+}
+
+function roman_day_number(roman_day)
+{
+var result;
+if (roman_day =3D=3D 1) result =3D "";
+else if (roman_day =3D=3D 2) result =3D "PR. ";
+else if (roman_day > 2) result =3D "ANTE DIEM " + =
+roman_number(roman_day) + sp;
+else result =3D e;
+return result;
+}
+
+function roman_date_from_julian(julian_day,julian_month,julian_year)
+{
+var result =3D "";
+var test =3D 100 * julian_month + 1 * julian_day;
+var r4 =3D julian_year % 4;
+var month =3D julian_month;
+if ((month =3D=3D 3) || (month =3D=3D 5) || (month =3D=3D 7) || (month =
+=3D=3D 10)){nones =3D 8; ides =3D 16; calends =3D 33;}
+if ((month =3D=3D 1) || (month =3D=3D 8) || (month =3D=3D 12)){nones =3D =
+6; ides =3D 14; calends =3D 33;}
+if ((month =3D=3D 4) || (month =3D=3D 6) || (month =3D=3D 9) || (month =
+=3D=3D 11)){nones =3D 6; ides =3D 14; calends =3D 32;}
+if (month =3D=3D 2)
+{
+nones =3D 6; ides =3D 14; calends =3D 30;
+if ((r4 =3D=3D 0) && (julian_day > 24)) calends =3D 31;
+}
+month =3D month - 1;
+var n =3D nones - julian_day;
+var i =3D ides - julian_day;
+var c =3D calends - julian_day;
+if (julian_day =3D=3D 1) result =3D "KAL. " + =
+roman_months[julian_month];
+else if (n =3D=3D 1) result =3D "NON. " + roman_months[julian_month];
+else if (i =3D=3D 1) result =3D "ID. " + roman_months[julian_month];
+else if (n>1)
+{result =3D roman_day_number(n) + "NON. " + roman_months[julian_month];}
+else if (i>1)
+{result =3D roman_day_number(i) + "ID. " + roman_months[julian_month];}
+else if (c>1)
+{result =3D roman_day_number(c) + "KAL. " + roman_months[(julian_month + =
+1) % 12];}
+else result =3D e;
+if ((r4 =3D=3D 0) && (test =3D=3D 225)) result =3D "ANTE DIEM BIS VI =
+KAL. MAR.";
+result =3D result + sp + roman_number(julian_year * 1 + 753) + " A. V. =
+C.";
+return result;
+}
+
+function adjusted_month_from_month(m)
+{
+var result =3D ((1 * m + 9) % 12) + 3;
+return result
+}
+
+function adjusted_year_from_year(y,m)
+{
+var result =3D y - 1 + division((1 * m + 7),10);
+return result
+}
+
+function year_from_adjusted_year(j_strich,m_strich)
+{
+var result =3D j_strich + division(m_strich,13);
+return result
+}
+
+function month_from_adjusted_month(m_strich)
+{
+var result =3D ((m_strich + 11) % 12) + 1;
+return result
+}
+
+function jd_from_greg(d,m_strich,y_strich)
+{
+var y4800 =3D y_strich + 4800;
+var a =3D division(y4800,100);
+var b =3D y4800 % 100;
+var result =3D 146097 * division(a,4) + 36524 * (a % 4) + 1461 * =
+division(b,4) + 365 * (b % 4) + division((7 * (m_strich - 2)),12) + 30 * =
+m_strich + 1 * d + 1721029 - 1753164
+return result
+}
+
+function jd_from_julian(d,m_strich,y_strich)
+{
+var y4800 =3D y_strich + 4800;
+var a =3D division(y4800,100);
+var b =3D y4800 % 100;
+var result =3D 36525 * a + 1461 * division(b,4) + 365 * (b % 4) + =
+division((7 * (m_strich - 2)),12) +
+ 30 * m_strich + 1 * d + 1721027 - 1753200;
+return result
+}
+
+function jd_from_jewish(d,m,y)
+{
+if ((common_year(y)) && (m =3D=3D 6)) {m=3D5};
+var ny0 =3D new_year(y);
+y++;
+var ny1 =3D new_year(y);
+var ix =3D index_from_length(ny1 - ny0);
+var jd =3D ny0 * 1 + jewish_month_days[ix][m] * 1 + d * 1 - 1;
+return jd;
+}
+
+function jd_from_islamic(d,m,y)
+{
+result =3D 1948439 + 10631 * Math.floor((y - 1) / 30) + =
+Math.floor((10631 / 30) * ((y - 1) % 30) + (483 / 1000)) + 59 * =
+Math.floor(m / 2) + 30 * (m % 2) + 1 * d;
+return result;
+}
+
+function jd_from_french(t,m,j)
+{
+var result =3D 1461 * division(j,4) + 365 * (j % 4) + 30 * m + t * 1 + =
+2375444;
+return result;
+}
+
+function jd_from_coptic(t,m,j)
+{
+var result =3D 1461 * division(j,4) + 365 * (j % 4) + 30 * m + t * 1 + =
+1824664;
+return result;
+}
+
+function jd_from_of(f,u,s)
+{
+var result =3D 234 * s + 26 * u + 1 * f + 2447145;
+return result
+}
+
+function of_from_jd(jd)
+{
+var f =3D (jd % 26) + 1;
+var u =3D division((jd % 234),26) + 1;
+var s =3D division(jd,234) - 10458;
+var emp;
+var i =3D 0;
+while (empire_offset[i+1] < f){i++;}
+if (s < 1) var result =3D f + pt + urlaubi[u] + sp + (s * (-1) + 1) + sp =
++ bof + " (" + (f - empire_offset[i]) + pt + empires[i] + ")";
+else var result =3D f + pt + urlaubi[u] + sp + s + " (" + (f - =
+empire_offset[i]) + pt + empires[i] + ")";
+return result
+}
+
+function greg_from_jd(jd)
+{
+var a =3D 1 * jd + 32044;
+var b =3D division(a,146097);
+var c =3D a % 146097;
+var d =3D Math.min(3,division(c,36524));
+var e =3D c - 36524 * d;
+var f =3D division(e,1461);
+var g =3D e % 1461;
+var h =3D Math.min(3,division(g,365));
+var k =3D g - 365 * h;
+var l =3D division((111 * k + 41),3395);
+var t =3D k - 30 * l - division((7 * l + 7),12) + 1;
+var m_strich =3D l + 3;
+var j_strich =3D 400 * b + 100 * d + 4 * f + 1 * h - 4800;
+var m =3D month_from_adjusted_month(m_strich);
+var j =3D year_from_adjusted_year(j_strich,m_strich);
+if (j < 1) var result =3D t + pt + months[m] + sp + (j * (-1) + 1) + =
+vuz;
+else var result =3D t + pt + months[m] + sp + j;
+return result
+}
+
+function julian_from_jd(jd)
+{
+var a =3D 1 * jd + 32082;
+var b =3D division(a,1461);
+var c =3D a % 1461;
+var d =3D Math.min(3,division(c,365));
+var e =3D c - 365 * d;
+var f =3D division((111 * e + 41),3395);
+var t =3D e - 30 * f - division((7 * f + 7),12) + 1;
+var m_strich =3D f + 3;
+var j_strich =3D 4 * b + 1 * d - 4800;
+var m =3D month_from_adjusted_month(m_strich);
+var j =3D year_from_adjusted_year(j_strich,m_strich);
+if (j < 1) var result =3D t + pt + months[m] + sp + (j * (-1) + 1) + =
+vuz;
+else var result =3D t + pt + months[m] + sp + j;
+return result;
+}
+
+function islamic_from_jd(jd)
+{
+var ix =3D jd - 1948440;
+var n30 =3D Math.floor(ix / 10631);
+var r30 =3D ix % 10631;
+var n1 =3D Math.floor((15 / 10631) * (2 * r30 + 1));
+var j =3D 30 * n30 + n1 * 1;
+var r1 =3D r30 - Math.floor((10631 / 30) * (j % 30) + (483 / 1000));
+var m =3D Math.floor((2 * r1) / 59);
+var t =3D r1 - 59 * Math.floor(m / 2) - 30 * (m % 2);
+t++
+m++;
+j++;
+result =3D t + pt + " " + islamic_month[m - 1] + " " + j;
+return result;
+}
+
+function french_from_jd(jd)
+{
+var a =3D 1 * jd - 2375475;
+var b =3D division(a,1461);
+var c =3D a % 1461;
+var d =3D Math.min(3,division(c,365));
+var e =3D c - 365 * d;
+var m =3D division(e,30);
+var t =3D (e % 30) + 1 * 1;
+var j =3D 4 * b + 1 * d;
+var result =3D t + pt + french_months[m] + sp + roman_f[j];
+return result;
+}
+
+function coptic_from_jd(jd)
+{
+var a =3D 1 * jd - 1824665;
+var b =3D division(a,1461);
+var c =3D a % 1461;
+var d =3D Math.min(3,division(c,365));
+var e =3D c - 365 * d;
+var m =3D division(e,30);
+var t =3D (e % 30) + 1 * 1;
+var j =3D 4 * b + 1 * d;
+var result =3D t + pt + coptic_month[m] + sp + j;
+return result;
+}
+
+function roman_from_jd(jd)
+{
+var a =3D 1 * jd + 32082;
+var b =3D division(a,1461);
+var c =3D a % 1461;
+var d =3D Math.min(3,division(c,365));
+var e =3D c - 365 * d;
+var f =3D division((111 * e + 41),3395);
+var t =3D e - 30 * f - division((7 * f + 7),12) + 1;
+var m_strich =3D f + 3;
+var j_strich =3D 4 * b + 1 * d - 4800;
+var m =3D month_from_adjusted_month(m_strich);
+var j =3D year_from_adjusted_year(j_strich,m_strich);
+var result =3D roman_date_from_julian(t,m,j)
+return result
+}
+
+function dow_from_jd(jd)
+{
+result =3D dow_name[jd % 7];
+return result
+}
+
+function long_count_from_jd(jd)
+{
+var m =3D jd - 584283;
+var n =3D m;
+var pictun =3D division(n,2880000);
+n =3D m % 2880000;
+var baktun =3D division(n,144000);
+n =3D m % 144000;
+var katun =3D division(n,7200);
+n =3D m % 7200;
+var tun =3D division(n,360);
+n =3D m % 360;
+var uinal =3D division(n,20);
+var kin =3D m % 20;
+var result =3D pictun + pi + baktun + ba + katun + ka + tun + tu + uinal =
++ ui + kin + ki;
+return result;
+}
+
+function tzolkin_from_jd(jd)
+{
+var n =3D jd + 136;
+var m =3D jd + 65;
+var zahl_tzolkin =3D ((n - 1) % 13) + 1 * 1;
+var name_tzolkin =3D mayan_day[n % 20];
+var p =3D m % 365;
+var name_haab =3D mayan_month[division(p,20)];
+var zahl_haab =3D p % 20;
+var result =3D " (" + zahl_tzolkin + " " + name_tzolkin + "; " + =
+zahl_haab + " " + name_haab + ")";
+return result;
+}
+
+
+function egyptian_from_jd(jd)
+{
+var n =3D jd + 47;
+var t =3D n % 365;
+var m =3D division(t,30);
+var s =3D division(m,4);
+var ms =3D m % 4;
+var d =3D (t % 30);
+d++
+if (s < 3)
+ {
+  res_season =3D (" (" + ord_numb[ms] + egyptian_season[s] + ")");
+ }
+else res_season =3D "";
+var result =3D d + pt + egyptian_month[m] + res_season;
+return result;
+}
+
+
+function write_results(jd, x)
+{
+  if (browser =3D=3D browser_test)
+  {
+    write_results_micr(jd, x);
+  }
+  else
+  {
+    write_results_other(jd,x);
+  }
+}
+
+
+
+function write_results_other(jd, x)
+{
+var fu =3D form_url;
+var xx =3D x;
+var vorn =3D vorne;
+var max =3D last;
+var hd =3D headline;
+var daten =3D new Array(last);
+var t;
+for (q2 =3D 0; q2 <=3D last; q2++)
+{
+daten[q2] =3D "";
+}
+if (jd > -1)
+{
+            daten[greg_x] =3D greg_from_jd(jd);
+            daten[jul_x] =3D julian_from_jd(jd);
+            daten[jew_x] =3D jewish_from_jd(jd);
+            daten[rom_x] =3D roman_from_jd(jd);
+            daten[fr_x] =3D french_from_jd(jd);
+            daten[copt_x] =3D coptic_from_jd(jd);
+            daten[jd_x] =3D jd;
+            daten[my_x] =3D long_count_from_jd(jd) + sp + =
+tzolkin_from_jd(jd);
+            daten[of_x] =3D of_from_jd(jd);
+            daten[dow_x] =3D dow_from_jd(jd);
+            daten[egypt_x] =3D egyptian_from_jd(jd);
+            daten[isl_x] =3D islamic_from_jd(jd);
+}
+else
+{
+var q1 =3D 0;
+do
+{
+daten[q] =3D not_supported;
+q1++;}
+while (q <=3D max);
+}
+if (jd =3D=3D "") jd =3D 0;
+if (jd < 2086674)
+{
+daten[jew_x] =3D "<em>" + daten[jew_x] + "</em>";
+}
+if (jd < 347998)
+{
+daten[jew_x] =3D not_supported;
+}
+if (jd < 1948440)
+{
+ daten[isl_x] =3D not_supported;
+}
+if (jd < 1824665)
+{
+ daten[copt_x] =3D not_supported;
+}
+if ((jd < 584283) || (jd > 58184282))
+{
+daten[my_x] =3D not_supported;
+}
+if (jd < 2299161) daten[greg_x] =3D not_supported + "<em> (" + =
+daten[greg_x] + ")</em>";
+if (jd < 1723980)
+{
+ daten[rom_x] =3D not_supported;
+ daten[jul_x] =3D "<em>" + daten[jul_x] + "</em>";
+}
+if ((jd > 2380687) || (jd < 2376268))
+{
+daten[fr_x] =3D not_supported + "<em> (" + daten[fr_x] + ")</em>";
+}
+if ((jd < 2375840) || (jd > 2380952)) {daten[fr_x] =3D not_supported};
+document.open();
+document.writeln("<html>");
+document.writeln("<head>");
+document.writeln("<title>" + hd + "</title>");
+document.writeln("<meta http-equiv=3D\"content-type\" =
+content=3D\"text/html; charset=3Diso-8859-1\">");
+document.writeln("<link rel=3D\"stylesheet\" type=3D\"text/css\" =
+href=3D\"./css/styles.css\">");
+document.writeln("</head>");
+document.writeln("<body>");
+document.writeln("<p class=3D\"narrow\">&nbsp;</p>");
+document.writeln("<h2>" + hd + "</h2>");
+document.writeln("<p>&nbsp;</p>");
+document.writeln("<table>");
+var q =3D 0;
+do
+{
+document.writeln("<tr>");
+if (q =3D=3D xx)
+{
+t =3D "th";
+}
+else t =3D "td";
+document.write("<" + t + " class=3D\"l\">" + vorn[q] + "</" + t + "><" + =
+t + " class=3D\"l\">" + daten[q] + "</" + t + ">");
+document.writeln("</tr>");
+q++;
+}
+while (q <=3D max);
+document.writeln("</table>");
+document.writeln("<p><a =
+href=3D\"javascript:location.replace(window.location.href)\">" + fu + =
+"</a></p>");
+document.writeln("</body>");
+document.writeln("</html>");
+document.close();
+}
+
+
+
+
+
+function write_results_micr(jd, x)
+{
+         var daten =3D new Array(last);
+         for (q2 =3D 0; q2 <=3D last; q2++)
+         {
+             daten[q2] =3D "";
+         }
+         if (jd > -1)
+         {
+            daten[greg_x] =3D greg_from_jd(jd);
+            daten[jul_x] =3D julian_from_jd(jd);
+            daten[jew_x] =3D jewish_from_jd(jd);
+            daten[rom_x] =3D roman_from_jd(jd);
+            daten[fr_x] =3D french_from_jd(jd);
+            daten[copt_x] =3D coptic_from_jd(jd);
+            daten[jd_x] =3D jd;
+            daten[my_x] =3D long_count_from_jd(jd) + sp + =
+tzolkin_from_jd(jd);
+            daten[of_x] =3D of_from_jd(jd);
+            daten[dow_x] =3D dow_from_jd(jd);
+            daten[egypt_x] =3D egyptian_from_jd(jd);
+			daten[isl_x] =3D islamic_from_jd(jd);
+         }
+         else
+         {
+             var q1 =3D 0;
+             do
+             {
+                 daten[q1] =3D not_supported;
+                 q1++;
+             }
+             while (q1 <=3D last);
+         }
+         if (jd =3D=3D "") {jd =3D 0;}
+         if (jd < 2086674)
+         {
+             daten[jew_x] =3D "<em>" + daten[jew_x] + "</em>";
+         }
+         if (jd < 347998)
+         {
+             daten[jew_x] =3D not_supported;
+         }
+         if (jd < 1948440)
+         {
+             daten[isl_x] =3D not_supported;
+         }
+         if (jd < 1824665)
+         {
+             daten[copt_x] =3D not_supported;
+         }
+         if ((jd < 584283) || (jd > 58184282))
+         {
+            daten[my_x] =3D not_supported;
+         }
+         if (jd < 2299161)
+         {
+            daten[greg_x] =3D not_supported + "<em> (" + daten[greg_x] + =
+")</em>";
+         }
+         if (jd < 1723980)
+         {
+            daten[rom_x] =3D not_supported;
+            daten[jul_x] =3D "<em>" + daten[jul_x] + "</em>";
+         }
+         if ((jd > 2380687) || (jd < 2376268))
+         {
+            daten[fr_x] =3D not_supported + "<em> (" + daten[fr_x] + =
+")</em>";
+         }
+         if ((jd < 2375840) || (jd > 2380952))
+         {
+            daten[fr_x] =3D not_supported;
+         }
+         var q1 =3D 0;
+         do
+         {
+             if (q1 =3D=3D x) {daten[q1] =3D "<strong>" + daten[q1] + =
+"</strong>";}
+             q1++;
+         }
+         while (q1 <=3D last);
+         document.all.greg.innerHTML =3D daten[greg_x];
+         document.all.jul.innerHTML =3D daten[jul_x];
+         document.all.rom.innerHTML =3D daten[rom_x];
+         document.all.jued.innerHTML =3D daten[jew_x];
+         document.all.copt.innerHTML =3D daten[copt_x];
+         document.all.jd.innerHTML =3D daten[jd_x];
+         document.all.rev.innerHTML =3D daten[fr_x];
+         document.all.maya.innerHTML =3D daten[my_x];
+         document.all.misr.innerHTML =3D daten[egypt_x];
+         document.all.of.innerHTML =3D daten[of_x];
+         document.all.wt.innerHTML =3D daten[dow_x];
+         document.all.isl.innerHTML =3D daten[isl_x];
+}
+
+function evaluate_greg(greg_day,greg_month,greg_year)
+{
+var jd =3D =
+jd_from_greg(Math.abs(greg_day),adjusted_month_from_month(greg_month), =
+adjusted_year_from_year(Math.abs(greg_year),greg_month));
+write_results(jd,greg_x);
+}
+
+function evaluate_jewish(jewish_day,jewish_month,jewish_year)
+{
+var jd =3D =
+jd_from_jewish(Math.abs(jewish_day),jewish_month,Math.abs(jewish_year));
+write_results(jd,jew_x);
+}
+
+function evaluate_islamic(islamic_day,islamic_month,islamic_year)
+{
+var jd =3D =
+jd_from_islamic(Math.abs(jewish_day),jewish_month,Math.abs(jewish_year));=
+
+write_results(jd,isl_x);
+}
+
+function evaluate_islamic(islamic_day,islamic_month,islamic_year)
+{
+var jd =3D =
+jd_from_islamic(Math.abs(islamic_day),islamic_month,Math.abs(islamic_year=
+));
+write_results(jd,isl_x);
+}
+
+function evaluate_french(f_day,f_month,f_year)
+{
+var jd =3D jd_from_french(Math.abs(f_day),f_month,f_year);
+write_results(jd,fr_x);
+}
+
+function evaluate_coptic(c_day,c_month,c_year)
+{
+var jd =3D jd_from_coptic(Math.abs(c_day),c_month,c_year);
+write_results(jd,copt_x);
+}
+
+function evaluate_julian(julian_day,julian_month,julian_year,vuz)
+{
+var help =3D Math.abs(julian_year);
+if (vuz =3D=3D true) julian_year =3D parseInt(help) * (-1) + 1;
+var jd =3D =
+jd_from_julian(Math.abs(julian_day),adjusted_month_from_month(julian_mont=
+h),
+adjusted_year_from_year(julian_year,julian_month));
+ write_results(jd,jul_x);
+}
+
+function evaluate_jd(jd)
+{
+if (jd =3D=3D "") jd =3D 0;
+write_results(Math.abs(jd),jd_x);
+}
+
+function evaluate_mayan(pictun,baktun,katun,tun,uinal,kin)
+{
+var jd =3D 2880000 * Math.abs(pictun) + 144000 * Math.abs(baktun) + 7200 =
+* Math.abs(katun) + 360 * Math.abs(tun) + 20 * Math.abs(uinal) + 1 * =
+Math.abs(kin) + 584283;
+write_results(jd,my_x);
+}
+
+function evaluate_of(faul,urlaubum,imperium,stress,vor_OF)
+{
+faul =3D Math.abs(faul);
+urlaubum =3D Math.abs(urlaubum);
+stress =3D Math.abs(stress);
+if (imperium =3D=3D 2) faul =3D 1 * faul + 3;
+if (imperium =3D=3D 3) faul =3D 1 * faul + 10;
+stress =3D Math.abs(stress);
+var help =3D stress;
+if (vor_OF =3D=3D true) stress =3D parseInt(help) * (-1) + 1;
+var jd =3D jd_from_of(faul,urlaubum,stress);
+write_results(jd,of_x);
+}
+
+function rechne_heute()
+{
+datum =3D new Date();
+var t_today =3D datum.getDate();
+var m_today =3D datum.getMonth();
+var y_today =3D datum.getYear();
+if (y_today < 1900) {y_today+=3D1900};
+document.frm_datum.greg_day.value =3D t_today;
+document.frm_datum.greg_month.options[m_today].selected =3D true;
+document.frm_datum.greg_year.value =3D y_today;
+m_today++;
+evaluate_greg(t_today,m_today,y_today);
+}
+
+function schreibe_heute()
+/* diese prozedur wird beim aufruf des formulars ausgef=FChrt */
+{
+datum =3D new Date();
+var t_today =3D datum.getDate();
+var m_today =3D datum.getMonth();
+var y_today =3D datum.getYear();
+if (y_today < 1900) {y_today+=3D1900};
+if (browser =3D=3D browser_test)
+{
+document.all.hier.innerHTML=3D"<p></p><table width=3D\"80%\"><tr><td =
+class=3D\"smalll\">" + vorne[greg_x] + "</td><td class=3D\"smalll\" =
+id=3D\"greg\">%</td></tr><tr><td class=3D\"smalll\">" + vorne[jul_x] + =
+"</td><td class=3D\"smalll\" id=3D\"jul\">%</td></tr><tr><td =
+class=3D\"smalll\">" + vorne[rom_x] + "</td><td class=3D\"smalll\" =
+id=3D\"rom\">%</td></tr><tr><td class=3D\"smalll\">" + vorne[jew_x] + =
+"</td><td class=3D\"smalll\" id=3D\"jued\">%</td></tr><tr><td =
+class=3D\"smalll\">" + vorne[isl_x] + "</td><td class=3D\"smalll\" =
+id=3D\"isl\">%</td></tr><tr><td class=3D\"smalll\">" + vorne[copt_x] + =
+"</td><td class=3D\"smalll\" id=3D\"copt\">%</td></tr><tr><td =
+class=3D\"smalll\">" + vorne[jd_x] + "</td><td class=3D\"smalll\" =
+id=3D\"jd\">%</td></tr><tr><td class=3D\"smalll\">" + vorne[fr_x] + =
+"</td><td class=3D\"smalll\" id=3D\"rev\">%</td></tr><tr><td =
+class=3D\"smalll\">" + vorne[my_x] + "</td><td class=3D\"smalll\" =
+id=3D\"maya\">%</td></tr><tr><td class=3D\"smalll\">" + vorne[egypt_x] + =
+"</td><td class=3D\"smalll\" id=3D\"misr\">%</td></tr><tr><td =
+class=3D\"smalll\">" + vorne[of_x] + "</td><td class=3D\"smalll\" =
+id=3D\"of\">%</td></tr><tr><td class=3D\"smalll\">" + vorne[dow_x] + =
+"</td><td class=3D\"smalll\" id=3D\"wt\">%</td></tr></table>";
+m_today++;
+write_results(jd_from_greg(t_today,adjusted_month_from_month(m_today),adj=
+usted_year_from_year(y_today,m_today)),0);
+}
+}
+------=_NextPart_000_0000_01C71D03.5B512360
+Content-Type: application/octet-stream
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://pagead2.googlesyndication.com/pagead/show_ads.js
+
+(function(){=0A=
+function m(b){return b!=3Dnull?'"'+b+'"':'""'}function B(b){if(typeof =
+encodeURIComponent=3D=3D"function"){return =
+encodeURIComponent(b)}else{return escape(b)}}function =
+c(b,a){if(a){window.google_ad_url+=3D"&"+b+"=3D"+a}}function =
+f(b,a){if(a){c(b,B(a))}}function l(b,a,d){if(a&&typeof =
+a=3D=3D"object"){a=3Da[d%a.length]}c("color_"+b,a)}function D(b,a){var =
+d=3Db.screen,g=3Dnavigator.javaEnabled(),e=3D-a.getTimezoneOffset();if(d)=
+{c("u_h",d.height);c("u_w",d.width);c("u_ah",d.availHeight);c("u_aw",d.av=
+ailWidth);c("u_cd",d.colorDepth)}c("u_tz",=0A=
+e);c("u_his",history.length);c("u_java",g);if(navigator.plugins){c("u_npl=
+ug",navigator.plugins.length)}if(navigator.mimeTypes){c("u_nmime",navigat=
+or.mimeTypes.length)}}function =
+y(b){b=3Db.toLowerCase();if(b.substring(0,3)!=3D"ca-"){b=3D"ca-"+b}return=
+ b}function =
+G(b,a,d){d=3Dd.substring(0,1000);d=3Dd.replace(/%\w?$/,"");if(b.google_ad=
+_output=3D=3D"js"&&(b.google_ad_request_done||b.google_radlink_request_do=
+ne)){a.write('<script language=3D"JavaScript1.1" =
+src=3D'+m(d)+"><\/script>")}else =
+if(b.google_ad_output=3D=3D"html"){if(b.name!=3D=0A=
+"google_ads_frame"){a.write('<iframe name=3D"google_ads_frame" =
+width=3D'+m(b.google_ad_width)+" height=3D"+m(b.google_ad_height)+" =
+frameborder=3D"+m(b.google_ad_frameborder)+" src=3D"+m(d)+' =
+marginwidth=3D"0" marginheight=3D"0" vspace=3D"0" hspace=3D"0" =
+allowtransparency=3D"true" =
+scrolling=3D"no">');a.write("</iframe>")}}else =
+if(b.google_ad_output=3D=3D"textlink"){a.write('<script =
+language=3D"JavaScript1.1" src=3D'+m(d)+"><\/script>")}}function =
+F(b){var =
+a=3Dnull;b.google_ad_frameborder=3Da;b.google_ad_format=3Da;b.google_page=
+_url=3Da;=0A=
+b.google_language=3Da;b.google_gl=3Da;b.google_country=3Da;b.google_regio=
+n=3Da;b.google_city=3Da;b.google_hints=3Da;b.google_safe=3Da;b.google_enc=
+oding=3Da;b.google_ad_output=3Da;b.google_max_num_ads=3Da;b.google_ad_cha=
+nnel=3Da;b.google_contents=3Da;b.google_alternate_ad_url=3Da;b.google_alt=
+ernate_color=3Da;b.google_color_bg=3Da;b.google_color_text=3Da;b.google_c=
+olor_link=3Da;b.google_color_url=3Da;b.google_color_border=3Da;b.google_c=
+olor_line=3Da;b.google_adtest=3Da;b.google_kw_type=3Da;b.google_kw=3Da;b.=
+google_num_radlinks=3Da;b.google_max_radlink_len=3D=0A=
+a;b.google_rl_filtering=3Da;b.google_rl_mode=3Da;b.google_rt=3Da;b.google=
+_ad_type=3Da;b.google_image_size=3Da;b.google_feedback=3Da;b.google_skip=3D=
+a;b.google_page_location=3Da;b.google_referrer_url=3Da;b.google_ad_region=
+=3Da;b.google_ad_section=3Da;b.google_bid=3Da;b.google_cpa_choice=3Da;b.g=
+oogle_cust_age=3Da;b.google_cust_gender=3Da;b.google_cust_interests=3Da;b=
+.google_cust_id=3Da;b.google_cust_job=3Da;b.google_cust_u_url=3Da;b.googl=
+e_ed=3Da}function A(){var b=3Dnull,a=3Dwindow,d=3Ddocument,g=3Dnew =
+Date,e=3Dg.getTime(),j=3Da.google_ad_format;if(a.google_cpa_choice){a.goo=
+gle_ad_url=3D=0A=
+"http://pagead2.googlesyndication.com/cpa/ads?";a.google_ad_url+=3D"clien=
+t=3D"+escape(y(a.google_ad_client));a.google_ad_region=3D"_google_cpa_reg=
+ion_";c("cpa_choice",a.google_cpa_choice);if(typeof =
+d.characterSet!=3D"undefined"){f("oe",d.characterSet)}else if(typeof =
+d.charset!=3D"undefined"){f("oe",d.charset)}}else{a.google_ad_url=3D"http=
+://pagead2.googlesyndication.com/pagead/ads?";a.google_ad_url+=3D"client=3D=
+"+escape(y(a.google_ad_client))}var =
+k=3Da.google_num_slots_by_client,w=3Da.google_num_slots_by_channel,i=3Da.=
+google_prev_ad_formats_by_region;=0A=
+a.onerror=3Da.google_org_error_handler;if(a.google_ad_region=3D=3Db&&a.go=
+ogle_ad_section!=3Db){a.google_ad_region=3Da.google_ad_section}var =
+h=3Da.google_ad_region=3D=3Db?"":a.google_ad_region,q=3Dfalse;if(j){q=3Dj=
+.indexOf("_0ads")>0}if(q){if(a.google_num_0ad_slots){a.google_num_0ad_slo=
+ts=3Da.google_num_0ad_slots+1}else{a.google_num_0ad_slots=3D1}if(a.google=
+_num_0ad_slots>1){return}}else =
+if(!a.google_cpa_choice){if(a.google_num_ad_slots){a.google_num_ad_slots=3D=
+a.google_num_ad_slots+1}else{a.google_num_ad_slots=3D1}if(a.google_num_sl=
+ots_to_rotate){i[h]=3D=0A=
+b;if(a.google_num_slot_to_show=3D=3Db){a.google_num_slot_to_show=3De%a.go=
+ogle_num_slots_to_rotate+1}if(a.google_num_slot_to_show!=3Da.google_num_a=
+d_slots){return}}else =
+if(a.google_num_ad_slots>3&&h=3D=3D""){return}}c("dt",g.getTime());c("hl"=
+,a.google_language);if(a.google_country){c("gl",a.google_country)}else{c(=
+"gl",a.google_gl)}c("gr",a.google_region);f("gcs",a.google_city);f("hints=
+",a.google_hints);c("adsafe",a.google_safe);c("oe",a.google_encoding);c("=
+lmt",a.google_last_modified_time);f("alternate_ad_url",=0A=
+a.google_alternate_ad_url);c("alt_color",a.google_alternate_color);c("ski=
+p",a.google_skip);var =
+n=3Da.google_ad_client;if(!k[n]){k[n]=3D1;k.length+=3D1}else{k[n]+=3D1}if=
+(i[h]){f("prev_fmts",i[h].toLowerCase());if(k.length>1){c("slot",k[n])}}i=
+f(j){f("format",j.toLowerCase());if(i[h]){i[h]=3Di[h]+","+j}else{i[h]=3Dj=
+}}c("num_ads",a.google_max_num_ads);c("output",a.google_ad_output);c("adt=
+est",a.google_adtest);if(a.google_ad_channel){var =
+r=3Da.google_ad_channel.toLowerCase();f("channel",r);var =
+s=3D"",t=3Dr.split("+");for(var o=3D=0A=
+0;o<t.length;o++){var =
+p=3Dt[o];if(!w[p]){w[p]=3D1}else{s+=3Dp+"+"}}f("pv_ch",s)}f("url",a.googl=
+e_page_url);l("bg",a.google_color_bg,e);l("text",a.google_color_text,e);l=
+("link",a.google_color_link,e);l("url",a.google_color_url,e);l("border",a=
+.google_color_border,e);l("line",a.google_color_line,e);c("kw_type",a.goo=
+gle_kw_type);f("kw",a.google_kw);f("contents",a.google_contents);c("num_r=
+adlinks",a.google_num_radlinks);c("max_radlink_len",a.google_max_radlink_=
+len);c("rl_filtering",a.google_rl_filtering);c("rl_mode",=0A=
+a.google_rl_mode);c("rt",a.google_rt);c("ad_type",a.google_ad_type);c("im=
+age_size",a.google_image_size);c("region",a.google_ad_region);c("feedback=
+_link",a.google_feedback);f("ref",a.google_referrer_url);f("loc",a.google=
+_page_location);c("bid",a.google_bid);c("cust_age",a.google_cust_age);c("=
+cust_gender",a.google_cust_gender);c("cust_interests",a.google_cust_inter=
+ests);c("cust_id",a.google_cust_id);c("cust_job",a.google_cust_job);c("cu=
+st_u_url",a.google_cust_u_url);c("ed",a.google_ed);if(z(a,d)&&d.body){var=
+ u=3D=0A=
+d.body.scrollHeight,v=3Dd.body.clientHeight;if(v&&u){f("cc",Math.round(v*=
+100/u))}}D(a,g);G(a,d,a.google_ad_url);F(a)}function C(b,a,d){A();return =
+true}function z(b,a){return b.top.location=3D=3Da.location}function =
+x(b,a){var d=3Da.documentElement;if(z(b,a))return =
+false;if(b.google_ad_width&&b.google_ad_height){var =
+g=3D1,e=3D1;if(b.innerHeight){g=3Db.innerWidth;e=3Db.innerHeight}else =
+if(d&&d.clientHeight){g=3Dd.clientWidth;e=3Dd.clientHeight}else =
+if(a.body){g=3Da.body.clientWidth;e=3Da.body.clientHeight}if(e>2*b.google=
+_ad_height||=0A=
+g>2*b.google_ad_width){return false}}return true}function E(){var =
+b=3Dwindow,a=3Ddocument,d=3Da.location,g=3Da.referrer,e=3Dnull;b.google_o=
+rg_error_handler=3Db.onerror;b.onerror=3DC;if(b.google_ad_frameborder=3D=3D=
+e){b.google_ad_frameborder=3D0}if(b.google_ad_output=3D=3De){b.google_ad_=
+output=3D"html"}if(b.google_ad_format=3D=3De&&b.google_ad_output=3D=3D"ht=
+ml"){b.google_ad_format=3Db.google_ad_width+"x"+b.google_ad_height}if(b.g=
+oogle_page_url=3D=3De){b.google_page_url=3Dg;if(!x(b,a)){b.google_page_ur=
+l=3Dd;b.google_last_modified_time=3DDate.parse(a.lastModified)/=0A=
+1000;b.google_referrer_url=3Dg}}else{b.google_page_location=3Dg;if(!x(b,a=
+)){b.google_page_location=3Dd}}if(b.google_num_slots_by_channel=3D=3De){b=
+.google_num_slots_by_channel=3D[]}if(b.google_num_slots_by_client=3D=3De)=
+{b.google_num_slots_by_client=3D[]}if(b.google_prev_ad_formats_by_region=3D=
+=3De){b.google_prev_ad_formats_by_region=3D[]}}E();A();=0A=
+})()
+------=_NextPart_000_0000_01C71D03.5B512360--
