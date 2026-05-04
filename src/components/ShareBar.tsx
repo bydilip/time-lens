@@ -1,4 +1,5 @@
 import type { Query, Result } from "../types";
+import { exportResultCsv } from "../utils/resultActions";
 
 type Props = {
   query: Query;
@@ -34,7 +35,10 @@ export default function ShareBar({ query, result }: Props) {
       >
         Copy as text
       </button>
-      <button className="px-3 py-1.5 rounded-md border border-neutral-200 dark:border-neutral-800 hover:bg-neutral-100 dark:hover:bg-neutral-900">
+      <button
+        onClick={() => exportResultCsv(result)}
+        className="px-3 py-1.5 rounded-md border border-neutral-200 dark:border-neutral-800 hover:bg-neutral-100 dark:hover:bg-neutral-900"
+      >
         Export CSV
       </button>
     </footer>

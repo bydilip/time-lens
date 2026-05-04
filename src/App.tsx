@@ -1,4 +1,5 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import CommandPalette, { type PaletteCommand } from "./components/CommandPalette";
 import TopBar from "./components/TopBar";
 import SmartInput from "./components/SmartInput";
 import Workspace from "./components/Workspace";
@@ -6,6 +7,7 @@ import type { Query, Result } from "./types";
 import { mockInput } from "./mock";
 import { getAdapter, run } from "./engine";
 import { parseNaturalLanguageQuery } from "./utils/naturalLanguage";
+import { copyGregorianResult, exportResultCsv } from "./utils/resultActions";
 
 type CalculationState = {
   result: Result | null;
@@ -17,6 +19,7 @@ export default function App() {
   const [query, setQuery] = useState<Query>({ input: mockInput, operations: [] });
   const [inputError, setInputError] = useState<string | null>(null);
   const [paletteOpen, setPaletteOpen] = useState(false);
+  const [theme, setTheme] = useState<"light" | "dark">("light");
 
   const calculation: CalculationState = useMemo(() => {
     try {
@@ -31,9 +34,76 @@ export default function App() {
     }
   }, [query]);
 
+  useEffect(() => {
+    document.documentElement.classList.toggle("dark", theme === "dark");
+  }, [theme]);
+
+  useEffect(() => {
+    const onKeyDown = (event: KeyboardEvent) => {
+      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") {
+        event.preventDefault();
+        setPaletteOpen(true);
+      }
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, []);
+
+  const todayQuery = (): Query => ({
+    input: todayGregorianDate(),
+    operations: [],
+  });
+
+  const commands: PaletteCommand[] = [
+    {
+      id: "jump-today",
+      label: "Jump to today",
+      description: "Set the input date to today and keep current operations.",
+      run: () => {
+        setQuery({ ...query, input: todayGregorianDate() });
+        setInputError(null);
+      },
+    },
+    {
+      id: "reset-calculation",
+      label: "Reset calculation",
+      description: "Clear operations and reset the input date to today.",
+      run: () => {
+        setQuery(todayQuery());
+        setInputError(null);
+      },
+    },
+    {
+      id: "copy-result",
+      label: "Copy result",
+      description: "Copy the primary Gregorian result to the clipboard.",
+      disabled: !calculation.result?.dates.gregorian,
+      disabledReason: "No Gregorian result is available to copy.",
+      run: () => copyGregorianResult(calculation.result),
+    },
+    {
+      id: "export-csv",
+      label: "Export CSV",
+      description: "Download the current results as a CSV file.",
+      disabled: !calculation.result,
+      disabledReason: "No result is available to export.",
+      run: () => exportResultCsv(calculation.result),
+    },
+    {
+      id: "toggle-theme",
+      label: "Toggle theme",
+      description: `Switch to ${theme === "dark" ? "light" : "dark"} theme.`,
+      run: () => setTheme((current) => (current === "dark" ? "light" : "dark")),
+    },
+  ];
+
   return (
     <div className="min-h-screen bg-neutral-50 text-neutral-900 dark:bg-neutral-950 dark:text-neutral-100">
-      <TopBar onOpenPalette={() => setPaletteOpen(true)} />
+      <TopBar
+        onOpenPalette={() => setPaletteOpen(true)}
+        onToggleTheme={() => setTheme((current) => (current === "dark" ? "light" : "dark"))}
+      />
       <main className="mx-auto max-w-6xl px-6 py-8 space-y-6">
         <SmartInput
           onSubmit={(text) => {
@@ -51,24 +121,25 @@ export default function App() {
         <Workspace query={query} setQuery={setQuery} calculation={calculation} />
       </main>
       {paletteOpen && (
-        <div
-          className="fixed inset-0 bg-black/40 flex items-start justify-center pt-32"
-          onClick={() => setPaletteOpen(false)}
-        >
-          <div
-            className="w-[480px] rounded-lg bg-white dark:bg-neutral-900 shadow-xl border border-neutral-200 dark:border-neutral-800 p-2"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <input
-              autoFocus
-              placeholder="Search calendars, jump to today, share..."
-              className="w-full px-3 py-2 bg-transparent outline-none text-sm"
-            />
-          </div>
-        </div>
+        <CommandPalette
+          commands={commands}
+          onClose={() => setPaletteOpen(false)}
+        />
       )}
     </div>
   );
+}
+
+function todayGregorianDate(): Query["input"] {
+  const today = new Date();
+  return {
+    calendar: "gregorian",
+    fields: {
+      y: today.getFullYear(),
+      m: today.getMonth() + 1,
+      d: today.getDate(),
+    },
+  };
 }
 
 function validateQuery(query: Query): void {

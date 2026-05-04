@@ -1,8 +1,9 @@
 type Props = {
   onOpenPalette: () => void;
+  onToggleTheme: () => void;
 };
 
-export default function TopBar({ onOpenPalette }: Props) {
+export default function TopBar({ onOpenPalette, onToggleTheme }: Props) {
   return (
     <header className="border-b border-neutral-200 dark:border-neutral-800 bg-white/80 dark:bg-neutral-950/80 backdrop-blur sticky top-0 z-10">
       <div className="mx-auto max-w-6xl px-6 h-14 flex items-center justify-between">
@@ -17,7 +18,12 @@ export default function TopBar({ onOpenPalette }: Props) {
           >
             <span className="font-mono text-xs">Cmd K</span>
           </button>
-          <button className="p-1.5 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-900">Theme</button>
+          <button
+            onClick={onToggleTheme}
+            className="p-1.5 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-900"
+          >
+            Theme
+          </button>
           <button className="p-1.5 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-900">Help</button>
         </div>
       </div>
